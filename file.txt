@@ -1,2 +1,1 @@
-coba 
-coba 2baris
+12

@@ -16,8 +16,7 @@ def read(file):
     
     
 
-l_h = read("file.txt")
-print(l_h)
+write(12)
 
 #f = open("setting/LH.txt")
 #print(f.readline())
