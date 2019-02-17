@@ -11,13 +11,13 @@ def write(text):
     file.close()
 
 def read(file):
-    f = open(file)
-    return f.readlines()
+    f = open(file, "r")
+    return f.read()
     
     
 
 write(12)
 
-#f = open("setting/LH.txt")
-#print(f.readline())
-# 
+f = open("file.txt")
+print(f.readline())
+ 
