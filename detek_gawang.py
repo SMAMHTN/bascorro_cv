@@ -6,7 +6,7 @@ Created on Sun Feb 17 17:51:29 2019
 """
 import cv2 as cv
 import numpy as np
-import callback as cb
+import saveConfig as cb
 
 def nothing(x):
     pass
@@ -30,8 +30,8 @@ while True:
     ret, frame = cap.read()
     tinggi, panjang, _ = frame.shape
     
+    frame = cv.GaussianBlur(frame, (11,11), 0)
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-    hsv = cv.GaussianBlur(hsv, (1,1), 0)
  
     l_h = int(read("setting/LH.txt"))
     l_s = int(read("setting/LS.txt"))
@@ -43,10 +43,19 @@ while True:
     lower_white = np.array([l_h,l_s,l_v])   
     upper_white = np.array([u_h,u_s,u_v])
     mask = cv.inRange(hsv, lower_white, upper_white)
-#    mask_rumput = 
+    mask = cv.erode(mask, (19,19), iterations = 2)
+    mask = cv.dilate(mask, (19,19), iterations = 2)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
+#    mask_rumput = 
+    _, contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     
+    for contour in contours:
+        area = cv.contourArea(contour)
+        
+        if area > 500:
+            cv.drawContours(result, contour, -1, (0,23,255), 7)
+              
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
