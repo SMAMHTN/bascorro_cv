@@ -45,6 +45,7 @@ while True:
     
     lower_white = np.array([l_h,l_s,l_v])   
     upper_white = np.array([u_h,u_s,u_v])
+    
     mask = cv.inRange(hsv, lower_white, upper_white)
     mask = cv.erode(mask, (19,19), iterations = 2)
     mask = cv.dilate(mask, (19,19), iterations = 2)
@@ -68,6 +69,7 @@ while True:
         if radius > 5:
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(result, center, 5, (0,0,255), -1)
+            cv.putText(result, "x : {}, y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
             
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
