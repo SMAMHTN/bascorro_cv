@@ -12,12 +12,7 @@ def saveConfig(value, file_name):
     filename = file_name + ".txt"
     file = open(str(filename), "w")
     file.write(value)
-    print(value)
-    print(filename)
     file.close()
-
-def nothing(x):
-    pass
 
 def read(file):
     f = open(file, "r")
