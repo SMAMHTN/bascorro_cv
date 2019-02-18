@@ -50,12 +50,22 @@ while True:
 #    mask_rumput = 
     _, contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     
-    for contour in contours:
-        area = cv.contourArea(contour)
+    center = 0
+    if len(contours) > 0:
+        c = max(contours, key= cv.contourArea)
+        ((x,y), radius) = cv.minEnclosingCircle(c)
+        M = cv.moments(c)
         
-        if area > 500:
-            cv.drawContours(result, contour, -1, (0,23,255), 7)
-              
+        # untuk calculate centroid
+        if M["m00"] > 0:
+            cx = int(M["m10"]) / int(M["m00"])
+            cy = int(M["m01"]) / int(M["m00"])
+        center = (int(cx), int(cy))        
+        
+        if radius > 5:
+            cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
+            cv.circle(result, center, 5, (0,0,255), -1)
+            
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
