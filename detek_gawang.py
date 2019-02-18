@@ -27,13 +27,23 @@ cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda
 cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda x: saveConfig(x, "setting/UH"))
 cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
 cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
+#Trackbar untuk dilation, erosion, gausian
+cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 1000, lambda x : saveConfig(x, "setting/dilation"))
+cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 1000, lambda x : saveConfig(x, "setting/erosion"))
+cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 255, lambda x : saveConfig(x, "setting/gaussian"))
 
+#trackbar untuk setting radius di bola
+cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 100, lambda x : saveConfig(x, "setting/radius"))
 
 while True:
     ret, frame = cap.read()
     tinggi, panjang, _ = frame.shape
     
-    frame = cv.GaussianBlur(frame, (11,11), 0)
+    gaussian = int(read("setting/gaussian.txt"))
+    if gaussian == 0:
+        gaussian = 1
+    
+    frame = cv.GaussianBlur(frame, (1,1), 0)
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
  
     l_h = int(read("setting/LH.txt"))
@@ -47,8 +57,16 @@ while True:
     upper_white = np.array([u_h,u_s,u_v])
     
     mask = cv.inRange(hsv, lower_white, upper_white)
-    mask = cv.erode(mask, (19,19), iterations = 2)
-    mask = cv.dilate(mask, (19,19), iterations = 2)
+    
+    erosion = int(read("setting/erosion.txt"))
+    if erosion == 0:
+        erosion = 1
+    dilation= int(read("setting/dilation.txt"))
+    if dilation == 0:
+        dilation = 1
+    
+    mask = cv.erode(mask, (erosion,erosion), iterations = 5)
+    mask = cv.dilate(mask, (dilation,dilation), iterations = 5)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
 #    mask_rumput = 
@@ -66,7 +84,8 @@ while True:
             cy = int(M["m01"]) / int(M["m00"])
         center = (int(cx), int(cy))        
         
-        if radius > 5:
+        rads = int(read("setting/radius.txt"))
+        if radius > rads :
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(result, center, 5, (0,0,255), -1)
             cv.putText(result, "x : {}, y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
@@ -77,8 +96,8 @@ while True:
     cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
     
     cv.imshow("result", result)
-#    cv.imshow("mask", mask)
-#    cv.imshow("frame", frame)
+    cv.imshow("mask", mask)
+    cv.imshow("frame", frame)
     key = cv.waitKey(1)
     if key == 27:
         break
