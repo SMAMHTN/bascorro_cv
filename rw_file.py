@@ -4,10 +4,11 @@ Created on Sun Feb 17 17:10:17 2019
 
 @author: Binatang Kesusahan
 """
-def write(text):
-    text = str(text)
-    file = open("file.txt", "w")
-    file.write(text)
+def write(value, file_name):
+    value = str(value)
+    filename = value + ".txt"
+    file = open(str(filename), "w")
+    file.write(value)
     file.close()
 
 def read(file):
@@ -16,7 +17,7 @@ def read(file):
     
     
 
-write(12)
+write(90, file)
 
 f = open("file.txt")
 print(f.readline())

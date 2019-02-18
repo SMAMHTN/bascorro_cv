@@ -6,7 +6,15 @@ Created on Sun Feb 17 17:51:29 2019
 """
 import cv2 as cv
 import numpy as np
-import saveConfig as cb
+
+def saveConfig(value, file_name):
+    value = str(value)
+    filename = file_name + ".txt"
+    file = open(str(filename), "w")
+    file.write(value)
+    print(value)
+    print(filename)
+    file.close()
 
 def nothing(x):
     pass
@@ -18,12 +26,12 @@ def read(file):
 cap = cv.VideoCapture(0)
 
 cv.namedWindow("trackbars")
-cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, cb.LH)
-cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, cb.LS)
-cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, cb.LV)
-cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, cb.UH)
-cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, cb.US)
-cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, cb.UV)
+cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
+cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
+cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
+cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda x: saveConfig(x, "setting/UH"))
+cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
+cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
 
 
 while True:
