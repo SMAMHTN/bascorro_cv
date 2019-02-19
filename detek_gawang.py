@@ -20,7 +20,8 @@ def read(file):
 
 cap = cv.VideoCapture(0)
 
-cv.namedWindow("trackbars")
+cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
+cv.resizeWindow("trackbars", 300, 400)
 cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
 cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
 cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
@@ -28,8 +29,8 @@ cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda
 cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
 cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
 #Trackbar untuk dilation, erosion, gausian
-cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 1000, lambda x : saveConfig(x, "setting/dilation"))
-cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 1000, lambda x : saveConfig(x, "setting/erosion"))
+cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 100, lambda x : saveConfig(x, "setting/dilation"))
+cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
 cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 255, lambda x : saveConfig(x, "setting/gaussian"))
 
 #trackbar untuk setting radius di bola
@@ -88,7 +89,7 @@ while True:
         if radius > rads :
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(result, center, 5, (0,0,255), -1)
-            cv.putText(result, "x : {}, y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
+            cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
             
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
