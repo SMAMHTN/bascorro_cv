@@ -23,7 +23,7 @@ cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
-cv.resizeWindow("trackbars", 300, 500)
+cv.resizeWindow("trackbars", 300, 600)
 cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
 cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
 cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
@@ -31,6 +31,11 @@ cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda
 cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
 cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
 #Trackbar untuk dilation, erosion, gausian
+cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 100, lambda x : saveConfig(x, "setting/dilation"))	
+cv.createTrackbar("DIL iterations", "trackbars", int(read("setting/dilation_iterations.txt")), 200, lambda x : saveConfig(x, "setting/dilation_iterations"))
+cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
+cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterations.txt")), 200, lambda x : saveConfig(x, "setting/erosion_iterations"))
+#OPENING
 cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
 cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
 cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
@@ -64,23 +69,40 @@ while True:
     
     mask = cv.inRange(hsv, lower_white, upper_white)
     
-    opening_kernel_size = int(read("setting/opening.txt"))
-    if opening_kernel_size == 0:
-        opening_kernel_size = 1
+#    opening_kernel_size = int(read("setting/opening.txt"))
+#    if opening_kernel_size == 0:
+#        opening_kernel_size = 1
+#    else:
+#        opening_kernel_size = (2*opening_kernel_size)+1
+#        
+#    opening_iterations = int(read("setting/opening_iterations.txt"))
+#    
+#    kernel_type = int(read("setting/opening_kernel_type.txt"))
+#    if kernel_type == 0:
+#        kernel_type = cv.MORPH_RECT
+#    elif kernel_type == 1:
+#        kernel_type = cv.MORPH_ELLIPSE
+#    elif kernel_type == 2:
+#        kernel_type = cv.MORPH_CROSS
+#    
+#    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
+    erosion = int(read("setting/erosion.txt"))
+    if erosion == 0:
+        erosion = 1 
     else:
-        opening_kernel_size = (2*opening_kernel_size)+1
+        erosion = (2*erosion)+1
         
-    opening_iterations = int(read("setting/opening_iterations.txt"))
+    dilation= int(read("setting/dilation.txt"))
+    if dilation == 0:
+        dilation = 1
+    else:
+        dilation = (2*dilation)+1
+
+    erosion_iterations = int(read("setting/erosion_iterations.txt"))
+    dilation_iterations = int(read("setting/dilation_iterations.txt"))
     
-    kernel_type = int(read("setting/opening_kernel_type.txt"))
-    if kernel_type == 0:
-        kernel_type = cv.MORPH_RECT
-    elif kernel_type == 1:
-        kernel_type = cv.MORPH_ELLIPSE
-    elif kernel_type == 2:
-        kernel_type = cv.MORPH_CROSS
-    
-    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
+    mask = cv.erode(mask, (erosion,erosion), iterations = erosion_iterations)
+    mask = cv.dilate(mask, (dilation,dilation), iterations = dilation_iterations)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
 #    mask_rumput = 
@@ -93,11 +115,13 @@ while True:
         M = cv.moments(c)
         
         # untuk calculate centroid
-        if M["m00"] > 0:
+        if int(M["m00"])> 0:
             cx = int(M["m10"]) / int(M["m00"])
             cy = int(M["m01"]) / int(M["m00"])
-        center = (int(cx), int(cy))        
-        
+            center = (int(cx), int(cy))        
+        else:
+            center = (1,1)
+            
         rads = int(read("setting/radius.txt"))
         if radius > rads :
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
