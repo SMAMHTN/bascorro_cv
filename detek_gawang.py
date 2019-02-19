@@ -43,8 +43,10 @@ while True:
     gaussian = int(read("setting/gaussian.txt"))
     if gaussian == 0:
         gaussian = 1
+    else:
+        gaussian = (2*gaussian)+1
     
-    frame = cv.GaussianBlur(frame, (1,1), 0)
+    frame = cv.GaussianBlur(frame, (gaussian,gaussian), 0)
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
  
     l_h = int(read("setting/LH.txt"))
@@ -62,9 +64,13 @@ while True:
     erosion = int(read("setting/erosion.txt"))
     if erosion == 0:
         erosion = 1
+    else:
+        erosion = (2*erosion)+1
     dilation= int(read("setting/dilation.txt"))
     if dilation == 0:
         dilation = 1
+    else:
+        dilation = (2*dilation)+1
     
     mask = cv.erode(mask, (erosion,erosion), iterations = 5)
     mask = cv.dilate(mask, (dilation,dilation), iterations = 5)
