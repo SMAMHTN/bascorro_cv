@@ -19,6 +19,8 @@ def read(file):
     return f.read()  
 
 cap = cv.VideoCapture(0)
+cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
+cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
 cv.resizeWindow("trackbars", 300, 500)
@@ -29,9 +31,9 @@ cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda
 cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
 cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
 #Trackbar untuk dilation, erosion, gausian
-cv.createTrackbar("opening\n kernel\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
-cv.createTrackbar("kernel\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
-cv.createTrackbar("opening\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
+cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
+cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
+cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
 cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
 
 #trackbar untuk setting radius di bola
