@@ -6,6 +6,7 @@ Created on Sun Feb 17 17:51:29 2019
 """
 import cv2 as cv
 import numpy as np
+import imutils
 
 def saveConfig(value, file_name):
     value = str(value)
@@ -19,11 +20,11 @@ def read(file):
     return f.read()  
 
 cap = cv.VideoCapture(0)
-cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
-cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
+#cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
+#cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
-cv.resizeWindow("trackbars", 300, 600)
+cv.resizeWindow("trackbars", 300, 700)
 cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
 cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
 cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
@@ -46,6 +47,12 @@ cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, l
 
 while True:
     ret, frame = cap.read()
+    frame =  imutils.resize(frame, width=400)
+    
+    counter = 0
+    direction = ""
+    (dX, dY) = (0,0)
+    
     tinggi, panjang, _ = frame.shape
     
     gaussian_kernel = int(read("setting/gaussian.txt"))
@@ -69,6 +76,7 @@ while True:
     
     mask = cv.inRange(hsv, lower_white, upper_white)
     
+    ################# kalo mau pake opening
 #    opening_kernel_size = int(read("setting/opening.txt"))
 #    if opening_kernel_size == 0:
 #        opening_kernel_size = 1
