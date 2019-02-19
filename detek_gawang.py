@@ -19,7 +19,7 @@ def read(file):
     f = open(file, "r")
     return f.read()  
 
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(1)
 #cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
 #cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
