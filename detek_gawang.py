@@ -21,7 +21,7 @@ def read(file):
 cap = cv.VideoCapture(0)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
-cv.resizeWindow("trackbars", 300, 400)
+cv.resizeWindow("trackbars", 300, 500)
 cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
 cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
 cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
@@ -29,24 +29,25 @@ cv.createTrackbar("U - H", "trackbars", int(read("setting/UH.txt")), 179, lambda
 cv.createTrackbar("U - S", "trackbars", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
 cv.createTrackbar("U - V", "trackbars", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
 #Trackbar untuk dilation, erosion, gausian
-cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 100, lambda x : saveConfig(x, "setting/dilation"))
-cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
-cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 255, lambda x : saveConfig(x, "setting/gaussian"))
+cv.createTrackbar("opening\n kernel\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
+cv.createTrackbar("kernel\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
+cv.createTrackbar("opening\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
+cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
 
 #trackbar untuk setting radius di bola
-cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 100, lambda x : saveConfig(x, "setting/radius"))
+cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, lambda x : saveConfig(x, "setting/radius"))
 
 while True:
     ret, frame = cap.read()
     tinggi, panjang, _ = frame.shape
     
-    gaussian = int(read("setting/gaussian.txt"))
-    if gaussian == 0:
-        gaussian = 1
+    gaussian_kernel = int(read("setting/gaussian.txt"))
+    if gaussian_kernel == 0:
+        gaussian_kernel = 1
     else:
-        gaussian = (2*gaussian)+1
+        gaussian_kernel = (2*gaussian_kernel)+1
     
-    frame = cv.GaussianBlur(frame, (gaussian,gaussian), 0)
+    frame = cv.GaussianBlur(frame, (gaussian_kernel,gaussian_kernel), 0)
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
  
     l_h = int(read("setting/LH.txt"))
@@ -61,19 +62,23 @@ while True:
     
     mask = cv.inRange(hsv, lower_white, upper_white)
     
-    erosion = int(read("setting/erosion.txt"))
-    if erosion == 0:
-        erosion = 1
+    opening_kernel_size = int(read("setting/opening.txt"))
+    if opening_kernel_size == 0:
+        opening_kernel_size = 1
     else:
-        erosion = (2*erosion)+1
-    dilation= int(read("setting/dilation.txt"))
-    if dilation == 0:
-        dilation = 1
-    else:
-        dilation = (2*dilation)+1
+        opening_kernel_size = (2*opening_kernel_size)+1
+        
+    opening_iterations = int(read("setting/opening_iterations.txt"))
     
-    mask = cv.erode(mask, (erosion,erosion), iterations = 5)
-    mask = cv.dilate(mask, (dilation,dilation), iterations = 5)
+    kernel_type = int(read("setting/opening_kernel_type.txt"))
+    if kernel_type == 0:
+        kernel_type = cv.MORPH_RECT
+    elif kernel_type == 1:
+        kernel_type = cv.MORPH_ELLIPSE
+    elif kernel_type == 2:
+        kernel_type = cv.MORPH_CROSS
+    
+    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
 #    mask_rumput = 
