@@ -7,6 +7,7 @@ Created on Sun Feb 17 17:51:29 2019
 import cv2 as cv
 import numpy as np
 import imutils
+import time
 
 def saveConfig(value, file_name):
     value = str(value)
@@ -47,7 +48,7 @@ cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, l
 
 while True:
     ret, frame = cap.read()
-    frame =  imutils.resize(frame, width=400)
+    frame =  imutils.resize(frame, width=600)
     
     counter = 0
     direction = ""
@@ -109,8 +110,11 @@ while True:
     erosion_iterations = int(read("setting/erosion_iterations.txt"))
     dilation_iterations = int(read("setting/dilation_iterations.txt"))
     
-    mask = cv.erode(mask, (erosion,erosion), iterations = erosion_iterations)
-    mask = cv.dilate(mask, (dilation,dilation), iterations = dilation_iterations)
+    erosion_kernel = cv.getStructuringElement(cv.MORPH_RECT, (erosion, erosion))
+    dilation_kernel = cv.getStructuringElement(cv.MORPH_RECT, (dilation, dilation))
+    
+    mask = cv.erode(mask, erosion_kernel, iterations = erosion_iterations)
+    mask = cv.dilate(mask, dilation_kernel, iterations = dilation_iterations)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
 #    mask_rumput = 
@@ -132,10 +136,18 @@ while True:
             
         rads = int(read("setting/radius.txt"))
         if radius > rads :
+            
+            if x < panjang/3 and y < 2*tinggi/3:
+                cv.putText(result, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,10), 1)
+            elif x < 2*panjang/3 and y < 2*tinggi/3:
+                cv.putText(result, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+            elif x > 2*panjang/3 and y < 2*tinggi/3:
+                cv.putText(result, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+            
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(result, center, 5, (0,0,255), -1)
             cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
-            
+
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
