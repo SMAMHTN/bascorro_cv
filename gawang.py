@@ -16,13 +16,13 @@ def read(file):
     f = open(file, "r")
     return f.read()  
 
-#cap = cv.VideoCapture(0)
-cap = cv.VideoCapture("goalpost2.mp4")
+cap = cv.VideoCapture(0)
+#cap = cv.VideoCapture("goalpost2.mp4")
 #cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
 #cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
-cv.namedWindow("mask", cv.WINDOW_KEEPRATIO)
-cv.resizeWindow("mask", (600,400))
+cv.namedWindow("mask_gawang", cv.WINDOW_KEEPRATIO)
+cv.resizeWindow("mask_gawang", (600,400))
 cv.namedWindow("Gawang", cv.WINDOW_NORMAL)
 #cv.resizeWindow("Gawang", 300, 700)
 cv.createTrackbar("L - H", "Gawang", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
@@ -36,19 +36,19 @@ cv.createTrackbar("Area Gawang", "Gawang", int(read("setting/area_gawang.txt")),
 font = cv.FONT_HERSHEY_SIMPLEX
 while True:
     ret, frame = cap.read()
-    
-    if  not ret:
-        cap = cv.VideoCapture("goalpost2.mp4")             
-        continue  
+#    
+#    if  not ret:
+#        cap = cv.VideoCapture("goalpost2.mp4")             
+#        continue  
     
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
          
-    l_h = int(read("setting/LH.txt"))
-    l_s = int(read("setting/LS.txt"))
-    l_v = int(read("setting/LV.txt"))
-    u_h = int(read("setting/UH.txt"))
-    u_s = int(read("setting/US.txt"))
-    u_v = int(read("setting/UV.txt"))
+    l_h = int(read("setting/LH_gawang.txt"))
+    l_s = int(read("setting/LS_gawang.txt"))
+    l_v = int(read("setting/LV_gawang.txt"))
+    u_h = int(read("setting/UH_gawang.txt"))
+    u_s = int(read("setting/US_gawang.txt"))
+    u_v = int(read("setting/UV_gawang.txt"))
     
     lower_color = np.array([l_h,l_s,l_v])
     upper_color = np.array([u_h,u_s,u_v])
@@ -78,7 +78,7 @@ while True:
 #            cv.circle(frame, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(frame, center, 5, (0,0,255), -1)
             cv.putText(frame, "x : {} y : {}".format(int(cx), int(cy)), (10, frame.shape[0]-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
-        time.sleep(2)
+##        time.sleep(0.5)
        
 #    for cnt in contours:
 #        area = cv.contourArea(cnt)
@@ -95,9 +95,9 @@ while True:
 #    
 #        
     cv.imshow("frame", frame)
-    cv.imshow("mask", mask)
+    cv.imshow("mask_gawang", mask)
         
-    key = cv.waitKey(1)
+    key = cv.waitKey(10)
     if key == 27:
         break
     

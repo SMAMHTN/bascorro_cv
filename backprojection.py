@@ -8,7 +8,8 @@ Created on Wed Feb 20 13:27:40 2019
 import cv2 as cv
 import numpy as np
 
-video = cv.VideoCapture("goalpost.mp4")
+#video = cv.VideoCapture("goalpost.mp4")
+video = cv.VideoCapture(0)
 roi = cv.imread("gambar/tiang_kanan.jpg")
 roi = cv.resize(roi , (600,400))
 hsv_roi = cv.cvtColor(roi, cv.COLOR_BGR2HSV)

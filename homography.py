@@ -12,7 +12,7 @@ import numpy as np
 img = cv.imread("gambar/original_image.jpg", cv.IMREAD_GRAYSCALE) #query image
 img = cv.resize(img, (640,480))
 
-cap = cv.VideoCapture("goalpost.mp4")
+cap = cv.VideoCapture(0)
 #cap = cv.VideoCapture(0)
 # Feautures
 sift = cv.xfeatures2d.SIFT_create()

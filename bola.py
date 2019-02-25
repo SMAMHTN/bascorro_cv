@@ -25,7 +25,7 @@ cap = cv.VideoCapture(0)
 #cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
-cv.resizeWindow("trackbars", 300, 700)
+cv.resizeWindow("trackbars", 300, 500)
 cv.createTrackbar("L - H", "trackbars", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
 cv.createTrackbar("L - S", "trackbars", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
 cv.createTrackbar("L - V", "trackbars", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
@@ -38,21 +38,18 @@ cv.createTrackbar("DIL iterations", "trackbars", int(read("setting/dilation_iter
 cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
 cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterations.txt")), 200, lambda x : saveConfig(x, "setting/erosion_iterations"))
 #OPENING
-cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
-cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
-cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
-cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
+#cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
+#cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
+#cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
+#cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
 
 #trackbar untuk setting radius di bola
 cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, lambda x : saveConfig(x, "setting/radius"))
 
 while True:
+    start = time.time()
     ret, frame = cap.read()
     frame =  imutils.resize(frame, width=600)
-    
-    counter = 0
-    direction = ""
-    (dX, dY) = (0,0)
     
     tinggi, panjang, _ = frame.shape
     
@@ -95,6 +92,7 @@ while True:
 #        kernel_type = cv.MORPH_CROSS
 #    
 #    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
+    
     erosion = int(read("setting/erosion.txt"))
     if erosion == 0:
         erosion = 1 
@@ -117,7 +115,7 @@ while True:
     mask = cv.dilate(mask, dilation_kernel, iterations = dilation_iterations)
     
     result = cv.bitwise_and(frame, frame, mask = mask)
-#    mask_rumput = 
+
     _, contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     
     center = 0
@@ -147,15 +145,19 @@ while True:
             cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(result, center, 5, (0,0,255), -1)
             cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
-
+            
+    end = time.time()
+    fps = str(int(1/(end-start)))
+    cv.putText(result, fps, (10, tinggi-55), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
     cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
     
-    cv.imshow("result", result)
-    cv.imshow("mask", mask)
-    cv.imshow("frame", frame)
+    
+    cv.imshow("trackbars", result)
+    cv.imshow("trackbars", mask)
+#    cv.imshow("frame", frame)
     key = cv.waitKey(1)
     if key == 27:
         break
