@@ -10,20 +10,23 @@ import imutils
 import time
 
 def centroid(contours):
-    center = 0
-    if len(contours) > 0:
-        c = max(contours, key= cv.contourArea)
-        ((x,y), radius) = cv.minEnclosingCircle(c)
-        M = cv.moments(c)
-        
-        # untuk calculate centroid
-        if int(M["m00"])> 0:
-            cx = int(M["m10"]) / int(M["m00"])
-            cy = int(M["m01"]) / int(M["m00"])
-            center = (int(cx), int(cy))        
-        else:
-            center = (1,1)
-        return(center, cx, cy)
+    center =0
+    cx =0 
+    cy =0
+    
+    c = max(contours, key= cv.contourArea)
+    ((x,y), radius) = cv.minEnclosingCircle(c)
+    M = cv.moments(c)
+    
+    # untuk calculate centroid
+    if int(M["m00"])> 0:
+        cx = int(M["m10"]) / int(M["m00"])
+        cy = int(M["m01"]) / int(M["m00"])
+        center = (int(cx), int(cy))        
+    else:
+        center = (1,1)
+    
+    return(center, cx, cy,x,y)
     
 
 def saveConfig(value, file_name):
@@ -54,7 +57,7 @@ cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 10
 cv.createTrackbar("DIL iterations", "trackbars", int(read("setting/dilation_iterations.txt")), 200, lambda x : saveConfig(x, "setting/dilation_iterations"))
 cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
 cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterations.txt")), 200, lambda x : saveConfig(x, "setting/erosion_iterations"))
-
+cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
 #trackbar untuk setting radius di bola
 cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, lambda x : saveConfig(x, "setting/radius"))
 
@@ -114,18 +117,22 @@ while True:
     x = 0
     y = 0
     radius = 0
-    center, cx, cy = centroid(contours)
-                
-    rads = int(read("setting/radius.txt"))
-    if radius > rads :
+    if len(contours) > 0:
+        center, cx, cy,x,y = centroid(contours)
         
-        if x < panjang/3 and y < 2*tinggi/3:
-            cv.putText(result, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,10), 1)
-        elif x < 2*panjang/3 and y < 2*tinggi/3:
-            cv.putText(result, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
-        elif x > 2*panjang/3 and y < 2*tinggi/3:
-            cv.putText(result, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
-        
+        rads = int(read("setting/radius.txt"))
+        if radius > rads :
+            
+            if x < panjang/3 and y < 2*tinggi/3:
+                print("kiri atas")
+                cv.putText(result, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,10), 1)
+            elif x < 2*panjang/3 and y < 2*tinggi/3:
+                print("tengah atas")
+                cv.putText(result, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+            elif x > 2*panjang/3 and y < 2*tinggi/3:
+                print("kanan atas")
+                cv.putText(result, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+            
         cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
         cv.circle(result, center, 5, (0,0,255), -1)
         cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
@@ -139,9 +146,9 @@ while True:
     cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
     
     
-    cv.imshow("trackbars", result)
-    cv.imshow("trackbars", mask)
-#    cv.imshow("frame", frame)
+    cv.imshow("result", result)
+    cv.imshow("mask", mask)
+    cv.imshow("frame", frame)
     key = cv.waitKey(1)
     if key == 27:
         break
