@@ -26,7 +26,7 @@ def centroid(contours):
     else:
         center = (1,1)
     
-    return(center, cx, cy,x,y)
+    return(radius,center, cx, cy,x,y)
     
 
 def saveConfig(value, file_name):
@@ -118,7 +118,7 @@ while True:
     y = 0
     radius = 0
     if len(contours) > 0:
-        center, cx, cy,x,y = centroid(contours)
+        radius, center, cx, cy, x, y = centroid(contours)
         
         rads = int(read("setting/radius.txt"))
         if radius > rads :
