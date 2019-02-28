@@ -37,6 +37,8 @@ cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 10
 cv.createTrackbar("DIL iterations", "trackbars", int(read("setting/dilation_iterations.txt")), 200, lambda x : saveConfig(x, "setting/dilation_iterations"))
 cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
 cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterations.txt")), 200, lambda x : saveConfig(x, "setting/erosion_iterations"))
+cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
+
 #OPENING
 #cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
 #cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
@@ -47,9 +49,9 @@ cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterat
 cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, lambda x : saveConfig(x, "setting/radius"))
 
 while True:
-    start = time.time()
+#    start = time.time()
     ret, frame = cap.read()
-    frame =  imutils.resize(frame, width=600)
+    frame =  imutils.resize(frame, width=300)
     
     tinggi, panjang, _ = frame.shape
     
@@ -68,6 +70,14 @@ while True:
     u_h = int(read("setting/UH.txt"))
     u_s = int(read("setting/US.txt"))
     u_v = int(read("setting/UV.txt"))
+    
+    l_h = int(read("setting/LH.txt"))
+    l_s = int(read("setting/LS.txt"))
+    l_v = int(read("setting/LV.txt"))
+    u_h = int(read("setting/UH.txt"))
+    u_s = int(read("setting/US.txt"))
+    u_v = int(read("setting/UV.txt"))
+    
     
     lower_white = np.array([l_h,l_s,l_v])   
     upper_white = np.array([u_h,u_s,u_v])
@@ -146,18 +156,18 @@ while True:
             cv.circle(result, center, 5, (0,0,255), -1)
             cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
             
-    end = time.time()
-    fps = str(int(1/(end-start)))
-    cv.putText(result, fps, (10, tinggi-55), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
+#    end = time.time()
+#    fps = str(int(1/(end-start)))
+#    cv.putText(result, fps, (10, tinggi-55), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
 #   Buat Garis Area di Layar
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
     cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
     
     
-    cv.imshow("trackbars", result)
-    cv.imshow("trackbars", mask)
-#    cv.imshow("frame", frame)
+    cv.imshow("result", result)
+    cv.imshow("mask", mask)
+    cv.imshow("frame", frame)
     key = cv.waitKey(1)
     if key == 27:
         break
