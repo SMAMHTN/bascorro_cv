@@ -17,8 +17,18 @@ def read(file):
     
     
 
-write(90, file)
+#write(90, file)
 
-f = open("file.txt")
-print(f.readline())
+#f = open("file.txt")
+#print(f.readline())
  
+
+def coba(a):
+    b = a+2
+    c = b+1
+    return(b,c)
+    
+    
+
+b, c = coba(1)
+print(c)

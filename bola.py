@@ -9,6 +9,23 @@ import numpy as np
 import imutils
 import time
 
+def centroid(contours):
+    center = 0
+    if len(contours) > 0:
+        c = max(contours, key= cv.contourArea)
+        ((x,y), radius) = cv.minEnclosingCircle(c)
+        M = cv.moments(c)
+        
+        # untuk calculate centroid
+        if int(M["m00"])> 0:
+            cx = int(M["m10"]) / int(M["m00"])
+            cy = int(M["m01"]) / int(M["m00"])
+            center = (int(cx), int(cy))        
+        else:
+            center = (1,1)
+        return(center, cx, cy)
+    
+
 def saveConfig(value, file_name):
     value = str(value)
     filename = file_name + ".txt"
@@ -37,11 +54,6 @@ cv.createTrackbar("dilation", "trackbars", int(read("setting/dilation.txt")), 10
 cv.createTrackbar("DIL iterations", "trackbars", int(read("setting/dilation_iterations.txt")), 200, lambda x : saveConfig(x, "setting/dilation_iterations"))
 cv.createTrackbar("erosion", "trackbars", int(read("setting/erosion.txt")), 100, lambda x : saveConfig(x, "setting/erosion"))
 cv.createTrackbar("ER iterations", "trackbars", int(read("setting/erosion_iterations.txt")), 200, lambda x : saveConfig(x, "setting/erosion_iterations"))
-#OPENING
-#cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
-#cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
-#cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
-#cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
 
 #trackbar untuk setting radius di bola
 cv.createTrackbar("radius", "trackbars", int(read("setting/radius.txt")), 200, lambda x : saveConfig(x, "setting/radius"))
@@ -74,25 +86,6 @@ while True:
     
     mask = cv.inRange(hsv, lower_white, upper_white)
     
-    ################# kalo mau pake opening
-#    opening_kernel_size = int(read("setting/opening.txt"))
-#    if opening_kernel_size == 0:
-#        opening_kernel_size = 1
-#    else:
-#        opening_kernel_size = (2*opening_kernel_size)+1
-#        
-#    opening_iterations = int(read("setting/opening_iterations.txt"))
-#    
-#    kernel_type = int(read("setting/opening_kernel_type.txt"))
-#    if kernel_type == 0:
-#        kernel_type = cv.MORPH_RECT
-#    elif kernel_type == 1:
-#        kernel_type = cv.MORPH_ELLIPSE
-#    elif kernel_type == 2:
-#        kernel_type = cv.MORPH_CROSS
-#    
-#    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
-    
     erosion = int(read("setting/erosion.txt"))
     if erosion == 0:
         erosion = 1 
@@ -118,33 +111,24 @@ while True:
 
     _, contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     
-    center = 0
-    if len(contours) > 0:
-        c = max(contours, key= cv.contourArea)
-        ((x,y), radius) = cv.minEnclosingCircle(c)
-        M = cv.moments(c)
+    x = 0
+    y = 0
+    radius = 0
+    center, cx, cy = centroid(contours)
+                
+    rads = int(read("setting/radius.txt"))
+    if radius > rads :
         
-        # untuk calculate centroid
-        if int(M["m00"])> 0:
-            cx = int(M["m10"]) / int(M["m00"])
-            cy = int(M["m01"]) / int(M["m00"])
-            center = (int(cx), int(cy))        
-        else:
-            center = (1,1)
-            
-        rads = int(read("setting/radius.txt"))
-        if radius > rads :
-            
-            if x < panjang/3 and y < 2*tinggi/3:
-                cv.putText(result, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,10), 1)
-            elif x < 2*panjang/3 and y < 2*tinggi/3:
-                cv.putText(result, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
-            elif x > 2*panjang/3 and y < 2*tinggi/3:
-                cv.putText(result, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
-            
-            cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
-            cv.circle(result, center, 5, (0,0,255), -1)
-            cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
+        if x < panjang/3 and y < 2*tinggi/3:
+            cv.putText(result, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,255,10), 1)
+        elif x < 2*panjang/3 and y < 2*tinggi/3:
+            cv.putText(result, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+        elif x > 2*panjang/3 and y < 2*tinggi/3:
+            cv.putText(result, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100,250,10),1)
+        
+        cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
+        cv.circle(result, center, 5, (0,0,255), -1)
+        cv.putText(result, "x : {} y : {}".format(int(cx), int(cy)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
             
     end = time.time()
     fps = str(int(1/(end-start)))

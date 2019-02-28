@@ -1,0 +1,28 @@
+
+#OPENING
+#cv.createTrackbar("opening\r\n kernel\r\n size", "trackbars", int(read("setting/opening.txt")), 100, lambda x : saveConfig(x, "setting/opening"))
+#cv.createTrackbar("kernel\r\n type", "trackbars", int(read("setting/opening_kernel_type.txt")), 2, lambda x : saveConfig(x, "setting/opening_kernel_type"))
+#cv.createTrackbar("opening\r\n iterations", "trackbars", int(read("setting/opening_iterations.txt")), 200, lambda x : saveConfig(x, "setting/opening_iterations"))
+#cv.createTrackbar("gaussian", "trackbars", int(read("setting/gaussian.txt")), 200, lambda x : saveConfig(x, "setting/gaussian"))
+
+
+
+################# kalo mau pake opening
+#    opening_kernel_size = int(read("setting/opening.txt"))
+#    if opening_kernel_size == 0:
+#        opening_kernel_size = 1
+#    else:
+#        opening_kernel_size = (2*opening_kernel_size)+1
+#        
+#    opening_iterations = int(read("setting/opening_iterations.txt"))
+#    
+#    kernel_type = int(read("setting/opening_kernel_type.txt"))
+#    if kernel_type == 0:
+#        kernel_type = cv.MORPH_RECT
+#    elif kernel_type == 1:
+#        kernel_type = cv.MORPH_ELLIPSE
+#    elif kernel_type == 2:
+#        kernel_type = cv.MORPH_CROSS
+#    
+#    mask = cv.morphologyEx(mask, cv.MORPH_OPEN, cv.getStructuringElement(kernel_type,(opening_kernel_size, opening_kernel_size )), iterations = opening_iterations)
+    
