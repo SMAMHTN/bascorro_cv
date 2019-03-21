@@ -16,7 +16,7 @@ def read(file):
     f = open(file, "r")
     return f.read()  
 
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(1)
 #cap = cv.VideoCapture("goalpost2.mp4")
 #cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
 #cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
@@ -25,22 +25,18 @@ cv.namedWindow("mask_gawang", cv.WINDOW_KEEPRATIO)
 cv.resizeWindow("mask_gawang", (600,400))
 cv.namedWindow("Gawang", cv.WINDOW_NORMAL)
 #cv.resizeWindow("Gawang", 300, 700)
-cv.createTrackbar("L - H", "Gawang", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
-cv.createTrackbar("L - S", "Gawang", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
-cv.createTrackbar("L - V", "Gawang", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
-cv.createTrackbar("U - H", "Gawang", int(read("setting/UH.txt")), 179, lambda x: saveConfig(x, "setting/UH"))
-cv.createTrackbar("U - S", "Gawang", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
-cv.createTrackbar("U - V", "Gawang", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
+cv.createTrackbar("L - H", "Gawang", int(read("setting/LH_gawang.txt")), 179, lambda x: saveConfig(x, "setting/LH_gawang"))
+cv.createTrackbar("L - S", "Gawang", int(read("setting/LS_gawang.txt")), 255, lambda x : saveConfig(x, "setting/LS_gawang"))
+cv.createTrackbar("L - V", "Gawang", int(read("setting/LV_gawang.txt")), 255, lambda x : saveConfig(x, "setting/LV_gawang"))
+cv.createTrackbar("U - H", "Gawang", int(read("setting/UH_gawang.txt")), 179, lambda x: saveConfig(x, "setting/UH_gawang"))
+cv.createTrackbar("U - S", "Gawang", int(read("setting/US_gawang.txt")), 255, lambda x: saveConfig(x, "setting/US_gawang"))
+cv.createTrackbar("U - V", "Gawang", int(read("setting/UV_gawang.txt")), 255, lambda x : saveConfig(x, "setting/UV_gawang"))
 cv.createTrackbar("Area Gawang", "Gawang", int(read("setting/area_gawang.txt")), 100000, lambda x : saveConfig(x, "setting/area_gawang"))
 
 font = cv.FONT_HERSHEY_SIMPLEX
 while True:
     ret, frame = cap.read()
-#    
-#    if  not ret:
-#        cap = cv.VideoCapture("goalpost2.mp4")             
-#        continue  
-    
+
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
          
     l_h = int(read("setting/LH_gawang.txt"))
@@ -73,7 +69,7 @@ while True:
         else:
             center = (1,1)
             
-        rads = int(read("setting/radius.txt"))
+        rads = int(read("setting/area_gawang.txt"))
         if radius > rads :
 #            cv.circle(frame, (int(x), int(y)), int(radius), (0,255,255), 2)
             cv.circle(frame, center, 5, (0,0,255), -1)
