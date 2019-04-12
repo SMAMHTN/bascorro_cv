@@ -51,13 +51,6 @@ while True:
     u_s = int(rw.read("setting/US_gawang.txt"))
     u_v = int(rw.read("setting/UV_gawang.txt"))
 
-    l_h = int(rw.read("setting/LH_gawang.txt"))
-    l_s = int(rw.read("setting/LS_gawang.txt"))
-    l_v = int(rw.read("setting/LV_gawang.txt"))
-    u_h = int(rw.read("setting/UH_gawang.txt"))
-    u_s = int(rw.read("setting/US_gawang.txt"))
-    u_v = int(rw.read("setting/UV_gawang.txt"))
-
 
     lower_white = np.array([l_h,l_s,l_v])
     upper_white = np.array([u_h,u_s,u_v])
