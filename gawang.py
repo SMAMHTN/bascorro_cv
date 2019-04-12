@@ -1,105 +1,129 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Feb 17 17:51:29 2019
+
+@author: Binatang Kesusahan
+"""
 import cv2 as cv
 import numpy as np
-import time
+import imutils
+import rw_file as rw
 
-def nothing(x):
-    pass
-
-def saveConfig(value, file_name):
-    value = str(value)
-    filename = file_name + ".txt"
-    file = open(str(filename), "w")
-    file.write(value)
-    file.close()
-
-def read(file):
-    f = open(file, "r")
-    return f.read()  
 
 cap = cv.VideoCapture(0)
-#cap = cv.VideoCapture("goalpost2.mp4")
-#cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
-#cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
+cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
+cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
 
-cv.namedWindow("mask_gawang", cv.WINDOW_KEEPRATIO)
-cv.resizeWindow("mask_gawang", (600,400))
-cv.namedWindow("Gawang", cv.WINDOW_NORMAL)
-#cv.resizeWindow("Gawang", 300, 700)
-cv.createTrackbar("L - H", "Gawang", int(read("setting/LH.txt")), 179, lambda x: saveConfig(x, "setting/LH"))
-cv.createTrackbar("L - S", "Gawang", int(read("setting/LS.txt")), 255, lambda x : saveConfig(x, "setting/LS"))
-cv.createTrackbar("L - V", "Gawang", int(read("setting/LV.txt")), 255, lambda x : saveConfig(x, "setting/LV"))
-cv.createTrackbar("U - H", "Gawang", int(read("setting/UH.txt")), 179, lambda x: saveConfig(x, "setting/UH"))
-cv.createTrackbar("U - S", "Gawang", int(read("setting/US.txt")), 255, lambda x: saveConfig(x, "setting/US"))
-cv.createTrackbar("U - V", "Gawang", int(read("setting/UV.txt")), 255, lambda x : saveConfig(x, "setting/UV"))
-cv.createTrackbar("Area Gawang", "Gawang", int(read("setting/area_gawang.txt")), 100000, lambda x : saveConfig(x, "setting/area_gawang"))
+cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
+cv.resizeWindow("trackbars", 300, 500)
+cv.createTrackbar("L - H", "trackbars", int(rw.read("setting/LH_gawang.txt")), 179, lambda x: rw.write(x, "setting/LH_gawang.txt"))
+cv.createTrackbar("L - S", "trackbars", int(rw.read("setting/LS_gawang.txt")), 255, lambda x : rw.write(x, "setting/LS_gawang.txt"))
+cv.createTrackbar("L - V", "trackbars", int(rw.read("setting/LV_gawang.txt")), 255, lambda x : rw.write(x, "setting/LV_gawang.txt"))
+cv.createTrackbar("U - H", "trackbars", int(rw.read("setting/UH_gawang.txt")), 179, lambda x: rw.write(x, "setting/UH_gawang.txt"))
+cv.createTrackbar("U - S", "trackbars", int(rw.read("setting/US_gawang.txt")), 255, lambda x: rw.write(x, "setting/US_gawang.txt"))
+cv.createTrackbar("U - V", "trackbars", int(rw.read("setting/UV_gawang.txt")), 255, lambda x : rw.write(x, "setting/UV_gawang.txt"))
 
-font = cv.FONT_HERSHEY_SIMPLEX
+cv.createTrackbar("dilation", "trackbars", int(rw.read("setting/dilation_gawang.txt")), 50, lambda x : rw.write(x, "setting/dilation_gawang.txt"))
+cv.createTrackbar("Dilation iterations", "trackbars", int(rw.read("setting/dilation_iteration_gawang.txt")), 200, lambda x : rw.write(x, "setting/dilation_iteration_gawang.txt"))
+cv.createTrackbar("erosion", "trackbars", int(rw.read("setting/erosion_gawang.txt")), 50, lambda x : rw.write(x, "setting/erosion_gawang.txt"))
+cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosion_iteration_gawang.txt")), 200, lambda x : rw.write(x, "setting/erosion_iteration_gawang.txt"))
+cv.createTrackbar("gaussian", "trackbars", int(rw.read("setting/gaussian_gawang.txt")), 20, lambda x : rw.write(x, "setting/gaussian_gawang.txt"))
+cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt")), 50, lambda x : rw.write(x, "setting/radius_gawang.txt"))
+
 while True:
     ret, frame = cap.read()
-#    
-#    if  not ret:
-#        cap = cv.VideoCapture("goalpost2.mp4")             
-#        continue  
-    
+    frame =  imutils.resize(frame, width=300)
+    tinggi, panjang, _ = frame.shape
+
+    gaussian_kernel = int(rw.read("setting/gaussian_gawang.txt"))
+    if gaussian_kernel == 0:
+        gaussian_kernel = 1
+    else:
+        gaussian_kernel = (2*gaussian_kernel)+1
+
+    frame = cv.GaussianBlur(frame, (gaussian_kernel,gaussian_kernel), 0)
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-         
-    l_h = int(read("setting/LH_gawang.txt"))
-    l_s = int(read("setting/LS_gawang.txt"))
-    l_v = int(read("setting/LV_gawang.txt"))
-    u_h = int(read("setting/UH_gawang.txt"))
-    u_s = int(read("setting/US_gawang.txt"))
-    u_v = int(read("setting/UV_gawang.txt"))
-    
-    lower_color = np.array([l_h,l_s,l_v])
-    upper_color = np.array([u_h,u_s,u_v])
-    
-    mask = cv.inRange(hsv, lower_color, upper_color)
-    kernel = np.ones((5,5), np.uint8)
-    
-    mask = cv.erode(mask, kernel)
-    #contour detection
-    _, contours, _= cv.findContours(mask,cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
-    
+
+    l_h = int(rw.read("setting/LH_gawang.txt"))
+    l_s = int(rw.read("setting/LS_gawang.txt"))
+    l_v = int(rw.read("setting/LV_gawang.txt"))
+    u_h = int(rw.read("setting/UH_gawang.txt"))
+    u_s = int(rw.read("setting/US_gawang.txt"))
+    u_v = int(rw.read("setting/UV_gawang.txt"))
+
+    l_h = int(rw.read("setting/LH_gawang.txt"))
+    l_s = int(rw.read("setting/LS_gawang.txt"))
+    l_v = int(rw.read("setting/LV_gawang.txt"))
+    u_h = int(rw.read("setting/UH_gawang.txt"))
+    u_s = int(rw.read("setting/US_gawang.txt"))
+    u_v = int(rw.read("setting/UV_gawang.txt"))
+
+
+    lower_white = np.array([l_h,l_s,l_v])
+    upper_white = np.array([u_h,u_s,u_v])
+
+    mask = cv.inRange(hsv, lower_white, upper_white)
+
+    erosion = int(rw.read("setting/erosion_gawang.txt"))
+    if erosion == 0:
+        erosion = 1
+    else:
+        erosion = (2*erosion)+1
+
+    dilation= int(rw.read("setting/dilation_gawang.txt"))
+    if dilation == 0:
+        dilation = 1
+    else:
+        dilation = (2*dilation)+1
+
+    erosion_iterations = int(rw.read("setting/erosion_iteration_gawang.txt"))
+    dilation_iterations = int(rw.read("setting/dilation_iteration_gawang.txt"))
+
+    erosion_kernel = cv.getStructuringElement(cv.MORPH_RECT, (erosion, erosion))
+    dilation_kernel = cv.getStructuringElement(cv.MORPH_RECT, (dilation, dilation))
+
+    mask = cv.erode(mask, erosion_kernel, iterations = erosion_iterations)
+    mask = cv.dilate(mask, dilation_kernel, iterations = dilation_iterations)
+
+    result = cv.bitwise_and(frame, frame, mask = mask)
+
+    contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+    x = 0
+    y = 0
+    radius = 0
+    center = None
+
     if len(contours) > 0:
-        c = max(contours, key= cv.contourArea)
-        ((x,y), radius) = cv.minEnclosingCircle(c)
+        c = max(contours, key=cv.contourArea)
+        ((x, y), radius) = cv.minEnclosingCircle(c)
         M = cv.moments(c)
-        
-        # untuk calculate centroid
-        if int(M["m00"])> 0:
+
+        cx = None
+        cy = None
+
+        if int(M["m00"]) > 0:
             cx = int(M["m10"]) / int(M["m00"])
             cy = int(M["m01"]) / int(M["m00"])
-            center = (int(cx), int(cy))        
-        else:
-            center = (1,1)
-            
-        rads = int(read("setting/radius.txt"))
-        if radius > rads :
-#            cv.circle(frame, (int(x), int(y)), int(radius), (0,255,255), 2)
-            cv.circle(frame, center, 5, (0,0,255), -1)
-            cv.putText(frame, "x : {} y : {}".format(int(cx), int(cy)), (10, frame.shape[0]-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
-##        time.sleep(0.5)
-       
-#    for cnt in contours:
-#        area = cv.contourArea(cnt)
-#        approx = cv.approxPolyDP(cnt,  0.01*cv.arcLength(cnt, True),True)
-#        x = approx.ravel()[0]
-#        y = approx.ravel()[1]
-#        
-#        area_gawang = int(read("setting/area_gawang.txt"))
-#        if area >area_gawang:
-#            
-#            if 6 < len(approx) < 9:
-#                cv.drawContours(frame, [approx], 0,(0,255,0), 4)
-#                cv.putText(frame, "Detected", (x,y), font, 1, (0,200,200))
-#    
-#        
+            center = (int(cx), int(cy))
+
+    rads = int(rw.read("setting/radius_gawang.txt"))
+    if radius > rads :
+
+        cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
+        cv.circle(result, center, 5, (0,0,255), -1)
+        cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
+
+    cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
+    cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
+    cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
+
+    cv.imshow("result", result)
+    cv.imshow("mask", mask)
     cv.imshow("frame", frame)
-    cv.imshow("mask_gawang", mask)
-        
-    key = cv.waitKey(10)
+    key = cv.waitKey(1)
     if key == 27:
         break
-    
+
 cap.release()
 cv.destroyAllWindows()
