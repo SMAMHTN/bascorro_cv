@@ -6,7 +6,7 @@ Created on Sun Feb 17 17:10:17 2019
 """
 def write(value, file_name):
     value = str(value)
-    filename = value + ".txt"
+    filename = file_name
     file = open(str(filename), "w")
     file.write(value)
     file.close()
@@ -14,11 +14,4 @@ def write(value, file_name):
 def read(file):
     f = open(file, "r")
     return f.read()
-    
-    
 
-write(90, file)
-
-f = open("file.txt")
-print(f.readline())
- 
