@@ -47,6 +47,7 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
 
     erosion_kernel = cv.getStructuringElement(cv.MORPH_RECT, (erosion,erosion))
     dilation_kernel = cv.getStructuringElement(cv.MORPH_RECT, (dilation,dilation))
+
     mask = cv.erode(mask, erosion_kernel, iterations= eros_iter)
     mask = cv.dilate(mask, dilation_kernel, iterations=dil_iter)
 
