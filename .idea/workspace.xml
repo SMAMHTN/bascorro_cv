@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b7c47e8-f88a-459e-85af-d72f9bd6c6fa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Program.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/printSetting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/dilation_iteration_gawang.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/erosion_gawang.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/erosion_iteration_bola.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/erosion_iteration_gawang.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/gaussian_bola.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/gaussian_gawang.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/radius_bola.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setting/radius_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backprojection.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/backprojection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bola.py" beforeDir="false" afterPath="$PROJECT_DIR$/bola.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature_detection_SIFT_SURF_ORB.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/feature_detection_SIFT_SURF_ORB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gabung.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/gabung.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gambar/original_image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/gambar/original_image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gawang.py" beforeDir="false" afterPath="$PROJECT_DIR$/gawang.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goal_post.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/goal_post.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goalpost.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/goalpost.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goalpost2.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/goalpost2.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/homography.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/original_image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rw_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/rw_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveConfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screwdriver.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/OldScript/screwdriver.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LH.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LH_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LH_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LS.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LS_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LS_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LV_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LV_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/UH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UH.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/UH_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UH_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/US_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/US_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/UV_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UV_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/dilation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_bola.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/dilation_iterations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/erosion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_iteration_bola.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/radius.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/erosion_bola.txt" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bola.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-151">
+              <caret line="242" selection-start-line="242" selection-end-line="242" />
+              <folding>
+                <element signature="e#97#113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rw_file.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gawang.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#97#113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>centro</find>
+      <find>centroid</find>
+      <find>mask</find>
+      <find>saveConfig</find>
+      <find>bola</find>
+      <find>LH</find>
+      <find>LV</find>
+      <find>))</find>
+      <find>l_h</find>
+      <find>int</find>
+      <find>rw.read</find>
+      <find>radius</find>
+      <find>imutils</find>
+      <find>dilation</find>
+      <find>gawang</find>
+      <find>even</find>
+      <find>gaussian</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>rw.saveConfig</replace>
+      <replace>write</replace>
+      <replace>)),</replace>
+      <replace>&quot;l_h&quot;</replace>
+      <replace>gawang</replace>
+      <replace>str</replace>
+      <replace>bola</replace>
+      <replace>odd</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Gawang_Function" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/setting/Gabung2.py" />
+        <option value="$PROJECT_DIR$/gabung.py" />
+        <option value="$PROJECT_DIR$/coba.py" />
+        <option value="$PROJECT_DIR$/printSetting.py" />
+        <option value="$PROJECT_DIR$/setting/program.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/rw_file.py" />
+        <option value="$PROJECT_DIR$/bola.py" />
+        <option value="$PROJECT_DIR$/gawang.py" />
+        <option value="$PROJECT_DIR$/setting/LH_gawang.txt" />
+        <option value="$PROJECT_DIR$/setting/LS.txt" />
+        <option value="$PROJECT_DIR$/setting/LS_gawang.txt" />
+        <option value="$PROJECT_DIR$/setting/LV_gawang.txt" />
+        <option value="$PROJECT_DIR$/setting/UH.txt" />
+        <option value="$PROJECT_DIR$/setting/UH_gawang.txt" />
+        <option value="$PROJECT_DIR$/setting/US_gawang.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="745" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <showMembers ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="Program" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Program" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="setting" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\KULIAH\Project\EWSBascorro\Program" />
+      <recent name="D:\KULIAH\Project\EWSBascorro\Program\gambar" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.bola">
+    <configuration name="bola" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bola.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gawang" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gawang.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="program (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/program.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="program" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/setting" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\KULIAH\Project\EWSBascorro\Program\program.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rw_file" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rw_file.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.bola" />
+        <item itemvalue="Python.gawang" />
+        <item itemvalue="Python.program (1)" />
+        <item itemvalue="Python.rw_file" />
+        <item itemvalue="Python.program" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b7c47e8-f88a-459e-85af-d72f9bd6c6fa" name="Default Changelist" comment="" />
+      <created>1554951641821</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554951641821</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18005952" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.32819724" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" weight="0.6009245" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5014881" side_tool="true" weight="0.60225445" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32850242" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" weight="0.32850242" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" weight="0.60225445" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5014881" side_tool="true" weight="0.60225445" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32850242" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/gabung.py" />
+    <entry file="file://$PROJECT_DIR$/saveConfig.py" />
+    <entry file="file://$PROJECT_DIR$/goal_post.jpg" />
+    <entry file="file://$PROJECT_DIR$/coba.py" />
+    <entry file="file://$PROJECT_DIR$/setting/erosion_bola.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homography.py" />
+    <entry file="file://$PROJECT_DIR$/gambar/original_image.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coba_serial.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/printSetting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OldScript/gabung.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="68" selection-start-line="68" selection-end-line="69" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/OpenCV/Lib/site-packages/imutils/convenience.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rw_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bola.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-151">
+          <caret line="242" selection-start-line="242" selection-end-line="242" />
+          <folding>
+            <element signature="e#97#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/LS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/LH_gawang.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/LS_gawang.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/LV_gawang.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/UH.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/UH_gawang.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/US_gawang.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gawang.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#97#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -6,7 +6,7 @@ Created on Sun Feb 17 17:10:17 2019
 """
 def write(value, file_name):
     value = str(value)
-    filename = value + ".txt"
+    filename = file_name
     file = open(str(filename), "w")
     file.write(value)
     file.close()
@@ -14,21 +14,11 @@ def write(value, file_name):
 def read(file):
     f = open(file, "r")
     return f.read()
-    
-    
 
-#write(90, file)
+def odd(param):
+    if param == 0:
+        param = 1
+    else:
+        param = (2*param)+1
+    return param
 
-#f = open("file.txt")
-#print(f.readline())
- 
-
-def coba(a):
-    b = a+2
-    c = b+1
-    return(b,c)
-    
-    
-
-b, c = coba(1)
-print(c)
