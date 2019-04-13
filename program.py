@@ -80,10 +80,7 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
 
     return result, mask, center, contours, x,y, radius
 
-
-cap = cv.VideoCapture(0)
-cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
-cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
+cap = cv.VideoCapture(1)
 
 def main():
     while True:
@@ -93,18 +90,38 @@ def main():
 
         hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
 
-        result_gawang, mask_gawang, center_gawang, contours_gawang, x_gawang, y_gawang, rads_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
+        result_gawang, _, _, _, x_gawang, y_gawang, rads_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
 
         if rads_gawang  != None and rads_gawang > radius_gawang:
-            result_bola, mask_bola, center_bola, contours_bola, x_bola, y_bola, rads_bola = detectObject(
+            result_bola, _, center_bola, contours_bola, x_bola, y_bola, rads_bola = detectObject(
                 frame, tinggi, panjang, hsv, l_h_bola, l_s_bola, l_v_bola, u_h_bola, u_s_bola, u_v_bola,
                 dilation_bola, dilation_iteration_bola, erosion_bola, erosion_iteration_bola, gaussian_bola,
                 radius_bola)
-            print(x_bola,y_bola)
+
+            if x_bola == 0 or y_bola == 0:
+                pass
+
+            elif x_bola < panjang / 3 and y_bola < 2 * tinggi / 3:
+                cv.putText(result_bola, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
+
+            elif x_bola < 2 * panjang / 3 and y_bola < 2 * tinggi / 3:
+                cv.putText(result_bola, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+
+            elif x_bola > 2 * panjang / 3 and y_bola < 2 * tinggi / 3:
+                cv.putText(result_bola, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+
+
+            cv.line(result_bola, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
+            cv.line(result_bola, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
+            cv.line(result_bola, (0, int(2 * tinggi / 3)), (panjang, int(2 * tinggi / 3)), (123, 10, 32), 2)  # bawah
+            cv.imshow("bola", result_bola)
+            # print(x_bola,y_bola)
+
 
 
         else:
             # trigger function serial disini buat cari bola
+            cv.destroyWindow("bola")
             pass
 
 

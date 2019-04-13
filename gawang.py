@@ -10,9 +10,7 @@ import imutils
 import rw_file as rw
 
 
-cap = cv.VideoCapture(0)
-cap.set(cv.CAP_PROP_FRAME_WIDTH, 120)
-cap.set(cv.CAP_PROP_FRAME_HEIGHT, 240)
+cap = cv.VideoCapture(1)
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
 cv.resizeWindow("trackbars", 300, 500)
