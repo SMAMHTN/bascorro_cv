@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b7c47e8-f88a-459e-85af-d72f9bd6c6fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bola_lama.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bola.py" beforeDir="false" afterPath="$PROJECT_DIR$/bola.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detek_gawang.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gawang.py" beforeDir="false" afterPath="$PROJECT_DIR$/gawang.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/LH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LH.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/LS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/LV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LV.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/UH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UH.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/US.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/US.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/UV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UV.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/dilation_bola.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_bola.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/dilation_iteration_bola.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_iteration_bola.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/erosion_bola.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/erosion_bola.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/erosion_iteration_bola.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/erosion_iteration_bola.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +25,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bola.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="70">
               <caret line="27" column="95" lean-forward="true" selection-start-line="27" selection-start-column="95" selection-end-line="27" selection-end-column="95" />
               <folding>
                 <element signature="e#97#113#0" expanded="true" />
@@ -51,37 +38,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OldScript/gabung.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="177" column="11" selection-start-line="177" selection-start-column="11" selection-end-line="188" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="129">
+              <caret line="102" column="32" lean-forward="true" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rw_file.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gawang.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="99" column="39" lean-forward="true" selection-end-line="122" />
+            <state relative-caret-position="336">
+              <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
               <folding>
                 <element signature="e#97#113#0" expanded="true" />
               </folding>
@@ -149,7 +118,6 @@
         <option value="$PROJECT_DIR$/setting/program.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/rw_file.py" />
-        <option value="$PROJECT_DIR$/gawang.py" />
         <option value="$PROJECT_DIR$/setting/LH_gawang.txt" />
         <option value="$PROJECT_DIR$/setting/LS.txt" />
         <option value="$PROJECT_DIR$/setting/LS_gawang.txt" />
@@ -159,8 +127,9 @@
         <option value="$PROJECT_DIR$/setting/US_gawang.txt" />
         <option value="$PROJECT_DIR$/setting/dilation_gawang.txt" />
         <option value="$PROJECT_DIR$/save_load.py" />
-        <option value="$PROJECT_DIR$/program.py" />
         <option value="$PROJECT_DIR$/bola.py" />
+        <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/gawang.py" />
       </list>
     </option>
   </component>
@@ -222,7 +191,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.bola (1)">
+  <component name="RunManager" selected="Python.gawang">
     <configuration name="bola (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Program" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -257,6 +226,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="D:\KULIAH\Project\EWSBascorro\Program\bola_lama.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gabung" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Program" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OldScript" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OldScript/gabung.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -307,34 +297,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="rw_file" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Program" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rw_file.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bola (1)" />
-        <item itemvalue="Python.program (1)" />
         <item itemvalue="Python.gawang" />
+        <item itemvalue="Python.program (1)" />
+        <item itemvalue="Python.gabung" />
+        <item itemvalue="Python.bola (1)" />
         <item itemvalue="Python.bola" />
-        <item itemvalue="Python.rw_file" />
       </list>
     </recent_temporary>
   </component>
@@ -483,9 +452,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bola_lama.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3417">
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
+          <folding>
+            <element signature="e#97#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rw_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
+        <state relative-caret-position="356">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
@@ -497,37 +476,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.py">
+    <entry file="file://$PROJECT_DIR$/bola.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bola_lama.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3417">
-          <caret line="276" selection-start-line="276" selection-end-line="276" />
+        <state relative-caret-position="70">
+          <caret line="27" column="95" lean-forward="true" selection-start-line="27" selection-start-column="95" selection-end-line="27" selection-end-column="95" />
           <folding>
             <element signature="e#97#113#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="102" column="32" lean-forward="true" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gawang.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="99" column="39" lean-forward="true" selection-end-line="122" />
-          <folding>
-            <element signature="e#97#113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bola.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="27" column="95" lean-forward="true" selection-start-line="27" selection-start-column="95" selection-end-line="27" selection-end-column="95" />
+        <state relative-caret-position="336">
+          <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
           <folding>
             <element signature="e#97#113#0" expanded="true" />
           </folding>

@@ -100,6 +100,7 @@ def main():
                 frame, tinggi, panjang, hsv, l_h_bola, l_s_bola, l_v_bola, u_h_bola, u_s_bola, u_v_bola,
                 dilation_bola, dilation_iteration_bola, erosion_bola, erosion_iteration_bola, gaussian_bola,
                 radius_bola)
+            print(x_bola,y_bola)
 
 
         else:

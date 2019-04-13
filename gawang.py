@@ -23,12 +23,12 @@ cv.createTrackbar("U - H", "trackbars", int(rw.read("setting/UH_gawang.txt")), 1
 cv.createTrackbar("U - S", "trackbars", int(rw.read("setting/US_gawang.txt")), 255, lambda x: rw.write(x, "setting/US_gawang.txt"))
 cv.createTrackbar("U - V", "trackbars", int(rw.read("setting/UV_gawang.txt")), 255, lambda x : rw.write(x, "setting/UV_gawang.txt"))
 
-cv.createTrackbar("dilation", "trackbars", int(rw.read("setting/dilation_gawang.txt")), 50, lambda x : rw.write(x, "setting/dilation_gawang.txt"))
-cv.createTrackbar("Dilation iterations", "trackbars", int(rw.read("setting/dilation_iteration_gawang.txt")), 200, lambda x : rw.write(x, "setting/dilation_iteration_gawang.txt"))
-cv.createTrackbar("erosion", "trackbars", int(rw.read("setting/erosion_gawang.txt")), 50, lambda x : rw.write(x, "setting/erosion_gawang.txt"))
-cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosion_iteration_gawang.txt")), 200, lambda x : rw.write(x, "setting/erosion_iteration_gawang.txt"))
+cv.createTrackbar("dilation", "trackbars", int(rw.read("setting/dilation_gawang.txt")), 20, lambda x : rw.write(x, "setting/dilation_gawang.txt"))
+cv.createTrackbar("Dilation iterations", "trackbars", int(rw.read("setting/dilation_iteration_gawang.txt")), 10, lambda x : rw.write(x, "setting/dilation_iteration_gawang.txt"))
+cv.createTrackbar("erosion", "trackbars", int(rw.read("setting/erosion_gawang.txt")), 20, lambda x : rw.write(x, "setting/erosion_gawang.txt"))
+cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosion_iteration_gawang.txt")), 10, lambda x : rw.write(x, "setting/erosion_iteration_gawang.txt"))
 cv.createTrackbar("gaussian", "trackbars", int(rw.read("setting/gaussian_gawang.txt")), 20, lambda x : rw.write(x, "setting/gaussian_gawang.txt"))
-cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt")), 50, lambda x : rw.write(x, "setting/radius_gawang.txt"))
+cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt")), 20, lambda x : rw.write(x, "setting/radius_gawang.txt"))
 
 while True:
     ret, frame = cap.read()
