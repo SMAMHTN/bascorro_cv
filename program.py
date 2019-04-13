@@ -58,6 +58,7 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
     x = 0
     y = 0
     center = None
+    radius = None
 
     if len(contours) > 0:
         c = max(contours, key=cv.contourArea)
@@ -76,7 +77,8 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
                 cv.circle(result, center, 5, (0,0,255), -1)
                 cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
 
-    return result, mask, center, contours, x,y
+
+    return result, mask, center, contours, x,y, radius
 
 
 cap = cv.VideoCapture(0)
@@ -91,12 +93,17 @@ def main():
 
         hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
 
-        result_gawang, mask_gawang, center_gawang, contours_gawang, x_gawang, y_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
+        result_gawang, mask_gawang, center_gawang, contours_gawang, x_gawang, y_gawang, rads_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
+
+        if rads_gawang  != None and rads_gawang > radius_gawang:
+            print('yes man')
+
 
         cv.imshow("frame", frame)
-
         cv.imshow("result_gawang", result_gawang)
-        cv.imshow("mask_gawang", mask_gawang)
+
+
+
 
         key = cv.waitKey(1)
         if key == 27:
