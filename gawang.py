@@ -92,20 +92,17 @@ while True:
         ((x, y), radius) = cv.minEnclosingCircle(c)
         M = cv.moments(c)
 
-        cx = None
-        cy = None
-
         if int(M["m00"]) > 0:
             cx = int(M["m10"]) / int(M["m00"])
             cy = int(M["m01"]) / int(M["m00"])
             center = (int(cx), int(cy))
 
-    rads = int(rw.read("setting/radius_gawang.txt"))
-    if radius > rads :
+            rads = int(rw.read("setting/radius_gawang.txt"))
+            if radius > rads :
 
-        cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
-        cv.circle(result, center, 5, (0,0,255), -1)
-        cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
+                cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
+                cv.circle(result, center, 5, (0,0,255), -1)
+                cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
 
     cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan

@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b7c47e8-f88a-459e-85af-d72f9bd6c6fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Program.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Program.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gawang.py" beforeDir="false" afterPath="$PROJECT_DIR$/gawang.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rw_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/rw_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LH_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LH_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LS_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LS_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/LV_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/LV_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/UH_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UH_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/US_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/US_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/UV_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/UV_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/dilation_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/dilation_iteration_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/dilation_iteration_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/erosion_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/erosion_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/erosion_iteration_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/erosion_iteration_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/gaussian_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/gaussian_gawang.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/radius_gawang.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setting/radius_gawang.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,26 +29,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.47693452">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/program.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rw_file.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="32">
-                  <caret line="2" selection-start-line="2" selection-end-line="2" />
-                  <folding>
-                    <element signature="e#0#20#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="272">
+                  <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/printSetting.py">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/program.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+                <state relative-caret-position="336">
+                  <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+                  <folding>
+                    <element signature="e#0#20#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -43,20 +60,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/gawang.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-                  <folding>
-                    <element signature="e#97#113#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/OldScript/gabung.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="244">
-                  <caret line="68" selection-start-line="68" selection-end-line="69" selection-end-column="38" />
+                <state relative-caret-position="96">
+                  <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -90,6 +95,7 @@
       <find>dilation</find>
       <find>gawang</find>
       <find>gaussian</find>
+      <find>even</find>
     </findStrings>
     <replaceStrings>
       <replace>rw.saveConfig</replace>
@@ -99,6 +105,7 @@
       <replace>gawang</replace>
       <replace>str</replace>
       <replace>bola</replace>
+      <replace>odd</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -115,13 +122,13 @@
         <option value="$PROJECT_DIR$/setting/Gabung2.py" />
         <option value="$PROJECT_DIR$/gabung.py" />
         <option value="$PROJECT_DIR$/coba.py" />
-        <option value="$PROJECT_DIR$/rw_file.py" />
         <option value="$PROJECT_DIR$/bola.py" />
         <option value="$PROJECT_DIR$/printSetting.py" />
         <option value="$PROJECT_DIR$/setting/program.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/rw_file.py" />
         <option value="$PROJECT_DIR$/gawang.py" />
+        <option value="$PROJECT_DIR$/program.py" />
       </list>
     </option>
   </component>
@@ -132,6 +139,7 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showMembers ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -142,11 +150,6 @@
               <item name="Program" type="b2602c69:ProjectViewProjectNode" />
               <item name="Program" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Program" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Program" type="462c0819:PsiDirectoryNode" />
-              <item name="OldScript" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -156,7 +159,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -176,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.gawang">
+  <component name="RunManager" selected="Python.program (1)">
     <configuration name="bola" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Program" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -284,10 +287,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.program (1)" />
         <item itemvalue="Python.gawang" />
         <item itemvalue="Python.bola" />
         <item itemvalue="Python.rw_file" />
-        <item itemvalue="Python.program (1)" />
         <item itemvalue="Python.program" />
       </list>
     </recent_temporary>
@@ -318,18 +321,18 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18005952" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.32850242" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.32819724" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" weight="0.60225445" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985119" weight="0.6020864" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5014881" side_tool="true" weight="0.60225445" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32850242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -371,13 +374,6 @@
     <entry file="file://$PROJECT_DIR$/coba_serial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bola.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -385,13 +381,6 @@
           <folding>
             <element signature="e#97#113#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rw_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -409,22 +398,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="48">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rw_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/OpenCV/Lib/site-packages/imutils/convenience.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gawang.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="96">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
           <folding>
-            <element signature="e#97#113#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>

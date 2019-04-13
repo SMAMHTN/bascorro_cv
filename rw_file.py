@@ -15,7 +15,7 @@ def read(file):
     f = open(file, "r")
     return f.read()
 
-def even(param):
+def odd(param):
     if param == 0:
         param = 1
     else:
