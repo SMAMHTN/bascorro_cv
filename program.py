@@ -96,7 +96,15 @@ def main():
         result_gawang, mask_gawang, center_gawang, contours_gawang, x_gawang, y_gawang, rads_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
 
         if rads_gawang  != None and rads_gawang > radius_gawang:
-            print('yes man')
+            result_bola, mask_bola, center_bola, contours_bola, x_bola, y_bola, rads_bola = detectObject(
+                frame, tinggi, panjang, hsv, l_h_bola, l_s_bola, l_v_bola, u_h_bola, u_s_bola, u_v_bola,
+                dilation_bola, dilation_iteration_bola, erosion_bola, erosion_iteration_bola, gaussian_bola,
+                radius_bola)
+
+
+        else:
+            # trigger function serial disini buat cari bola
+            pass
 
 
         cv.imshow("frame", frame)
