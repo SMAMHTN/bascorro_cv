@@ -15,3 +15,9 @@ def read(file):
     f = open(file, "r")
     return f.read()
 
+def even(param):
+    if param == 0:
+        param = 1
+    else:
+        param = (2*param)+1
+    return param
