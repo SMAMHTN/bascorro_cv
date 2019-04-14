@@ -65,3 +65,6 @@
       ps : imho pyimageresearch still the best for providing topic about opencv, makesure you check it 
 
   
+8. **Add argument parser**
+
+    Sure helps for debuging (eg: need display, add different parameter, etc) and when playing, just don't include the argument 

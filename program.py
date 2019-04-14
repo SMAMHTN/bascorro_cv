@@ -1,7 +1,9 @@
 import rw_file as rw
+import serial_rw as srw
 import cv2 as cv
 import imutils
 import numpy as np
+
 
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
@@ -31,7 +33,7 @@ erosion_iteration_bola = int(rw.read("setting/erosion_iteration_bola.txt"))
 gaussian_bola = int(rw.read("setting/gaussian_bola.txt"))
 radius_bola = int(rw.read("setting/radius_bola.txt"))
 
-def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,eros_iter,gaussian,radius):
+def detectObject(frame,tinggi,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,eros_iter,gaussian,radius_object):
 
     lower = np.array([lh,ls,lv])
     upper = np.array([uh,us,uv])
@@ -66,8 +68,7 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
             cy = int(M["m01"]) / int(M["m00"])
             center = (int(cx), int(cy))
 
-            rads = int(rw.read("setting/radius_gawang.txt"))
-            if radius > rads :
+            if radius > radius_object :
 
                 cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
                 cv.circle(result, center, 5, (0,0,255), -1)
@@ -87,42 +88,77 @@ def main():
 
         hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
 
-        result_gawang, _, _, _, x_gawang, y_gawang, rads_gawang = detectObject(frame,tinggi,panjang,hsv,l_h_gawang,l_s_gawang,l_v_gawang,u_h_gawang,u_s_gawang,u_v_gawang,dilation_gawang,dilation_iteration_gawang,erosion_gawang,erosion_iteration_gawang,gaussian_gawang,radius_gawang)
+        result_bola, _, _, _, x_bola, y_bola, rads_bola = detectObject\
+            (
+                frame,
+                tinggi,
+                hsv,
+                l_h_bola,
+                l_s_bola,
+                l_v_bola,
+                u_h_bola,
+                u_s_bola,
+                u_v_bola,
+                dilation_bola,
+                dilation_iteration_bola,
+                erosion_bola,
+                erosion_iteration_bola,
+                gaussian_bola,
+                radius_bola
+            )
 
-        if rads_gawang  != None and rads_gawang > radius_gawang:
-            result_bola, _, center_bola, contours_bola, x_bola, y_bola, rads_bola = detectObject(
-                frame, tinggi, panjang, hsv, l_h_bola, l_s_bola, l_v_bola, u_h_bola, u_s_bola, u_v_bola,
-                dilation_bola, dilation_iteration_bola, erosion_bola, erosion_iteration_bola, gaussian_bola,
-                radius_bola)
+
+        if rads_bola  != None and rads_bola > radius_bola:
+
+            result_gawang, _, center_gawang, _, x_gawang, y_gawang, rads_gawang = detectObject\
+                (
+                    frame,
+                    tinggi,
+                    hsv,
+                    l_h_gawang,
+                    l_s_gawang,
+                    l_v_gawang,
+                    u_h_gawang,
+                    u_s_gawang,
+                    u_v_gawang,
+                    dilation_gawang,
+                    dilation_iteration_gawang,
+                    erosion_gawang,
+                    erosion_iteration_gawang,
+                    gaussian_gawang,
+                    radius_gawang
+                )
 
             if x_bola == 0 or y_bola == 0:
                 pass
 
-            elif x_bola < panjang / 3 and y_bola < 2 * tinggi / 3:
-                cv.putText(result_bola, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
+            elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
+                cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
+                srw.serialWrite('A')
 
-            elif x_bola < 2 * panjang / 3 and y_bola < 2 * tinggi / 3:
-                cv.putText(result_bola, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+                cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+                srw.serialWrite('S')
 
-            elif x_bola > 2 * panjang / 3 and y_bola < 2 * tinggi / 3:
-                cv.putText(result_bola, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+                cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+                srw.serialWrite('D')
 
 
-            cv.line(result_bola, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
-            cv.line(result_bola, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
-            cv.line(result_bola, (0, int(2 * tinggi / 3)), (panjang, int(2 * tinggi / 3)), (123, 10, 32), 2)  # bawah
-            cv.imshow("bola", result_bola)
+            cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
+            cv.line(result_gawang, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
+            cv.line(result_gawang, (0, int(2 * tinggi / 3)), (panjang, int(2 * tinggi / 3)), (123, 10, 32), 2)  # bawah
+            cv.imshow("gawang", result_gawang)
             # print(x_bola,y_bola)
 
         else:
             # trigger function serial disini buat cari bola
-            #TODO add serial function here
-            #TODO fix old serial function or create new one
-            cv.destroyWindow("bola")
+
+            cv.destroyWindow("gawang")
             pass
 
         cv.imshow("frame", frame)
-        cv.imshow("result_gawang", result_gawang)
+        cv.imshow("result_bola", result_bola)
 
         key = cv.waitKey(1)
         if key == 27:
