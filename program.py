@@ -1,9 +1,10 @@
 import rw_file as rw
-import serial_rw as srw
+# import serial_rw as srw
 import cv2 as cv
 import imutils
 import numpy as np
 
+#TODO bikin argument parser
 
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
@@ -134,15 +135,15 @@ def main():
 
             elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
                 cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
-                srw.serialWrite('A')
+                # srw.serialWrite('A')
 
             elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
                 cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-                srw.serialWrite('S')
+                # srw.serialWrite('S')
 
             elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
                 cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-                srw.serialWrite('D')
+                # srw.serialWrite('D')
 
 
             cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
