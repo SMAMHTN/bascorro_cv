@@ -3,7 +3,6 @@ import cv2 as cv
 import imutils
 import numpy as np
 
-
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
 l_v_gawang = int(rw.read("setting/LV_gawang.txt"))
@@ -32,9 +31,7 @@ erosion_iteration_bola = int(rw.read("setting/erosion_iteration_bola.txt"))
 gaussian_bola = int(rw.read("setting/gaussian_bola.txt"))
 radius_bola = int(rw.read("setting/radius_bola.txt"))
 
-
 def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,eros_iter,gaussian,radius):
-
 
     lower = np.array([lh,ls,lv])
     upper = np.array([uh,us,uv])
@@ -52,7 +49,6 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
     mask = cv.dilate(mask, dilation_kernel, iterations=dil_iter)
 
     result = cv.bitwise_and(frame, frame, mask= mask)
-
     contours, _ = cv.findContours(mask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
     x = 0
@@ -77,15 +73,16 @@ def detectObject(frame,tinggi,panjang,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,er
                 cv.circle(result, center, 5, (0,0,255), -1)
                 cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
 
-
     return result, mask, center, contours, x,y, radius
 
-cap = cv.VideoCapture(1)
+cap = cv.VideoCapture(0)
+# cap.set(3, 480)
+# cap.set(4, 240)
 
 def main():
     while True:
         _, frame = cap.read()
-        frame = imutils.resize(frame, width=300)
+        frame = imutils.resize(frame, width=300,height=150)
         tinggi, panjang, _  = frame.shape
 
         hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
@@ -117,19 +114,15 @@ def main():
             cv.imshow("bola", result_bola)
             # print(x_bola,y_bola)
 
-
-
         else:
             # trigger function serial disini buat cari bola
+            #TODO add serial function here
+            #TODO fix old serial function or create new one
             cv.destroyWindow("bola")
             pass
 
-
         cv.imshow("frame", frame)
         cv.imshow("result_gawang", result_gawang)
-
-
-
 
         key = cv.waitKey(1)
         if key == 27:
