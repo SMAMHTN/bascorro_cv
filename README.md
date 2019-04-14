@@ -60,11 +60,11 @@
 7. **Multithreading the code**
  
      (perhaps) i already implemented this by the time you reading this, but still worth to research if any better library than imutils WebcamVideoStream
-
-       Usefull links
+     
+      Usefull links
         - https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
         - https://www.pyimagesearch.com/2015/12/28/increasing-raspberry-pi-fps-with-python-and-opencv/
 
-        ps : imho pyimageresearch still the best for providing topic about opencv, makesure you check it 
+      ps : imho pyimageresearch still the best for providing topic about opencv, makesure you check it 
 
   
