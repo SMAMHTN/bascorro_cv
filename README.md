@@ -19,13 +19,10 @@
 
 3. **MUST Buy Raspi CAM**
 
-    as i mention earlier, this also worth to try
-     + lot of people mention about using good driver for raspi cam, 
+    as i mention earlier, this also worth to try, also lot of people mention about using good driver for raspi cam, also research about that
 
-     >The Pi camera is 'run' by the GPU and can dump full frames into RAM at 15 frames a second .. this is 7.5MB/frame, 15fps = 112.5 Mega >BYTES per second .. or you can have full HD resolution 30fps H264 encoded (by the GPU) along with some simultaneous still photos (Google >MMAL) all at virtually zero CPU loading ..
-
+    >The Pi camera is 'run' by the GPU and can dump full frames into RAM at 15 frames a second .. this is 7.5MB/frame, 15fps = 112.5 Mega >BYTES per second .. or you can have full HD resolution 30fps H264 encoded (by the GPU) along with some simultaneous still photos (Google >MMAL) all at virtually zero CPU loading ..
     >On the other hand, the Pi USB is 'run' byte at a time by the CPU, and, at the cost of 100% CPU loading you might achieve a couple of >hundred Mega BITS per second .. not that a web cam is going to deliver that anyway (even if it could, you then don't have any CPU cycles >to do anything with it ..)
-
     >SO, unless CCTV resolutions (320x240 pixels) are what you want, it has to be the Pi camera.
 
       Reference links
@@ -45,7 +42,7 @@
     opencv 4 as mentioned in its website offers more feature, and some new algorithm, not really mentioning about performance increase, but we're expecting there is no performance degradation, so this also worth to try
 
       Usefull links 
-       - https://www.pyimagesearch.com/2018/09/26/install-opencv-4-on-your-raspberry-pi/
+      - https://www.pyimagesearch.com/2018/09/26/install-opencv-4-on-your-raspberry-pi/
 
 6. **Reseach about designing the code that fits into CPU Cache**
 
@@ -62,8 +59,8 @@
      (perhaps) i already implemented this by the time you reading this, but still worth to research if any better library than imutils WebcamVideoStream
      
       Usefull links
-        - https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
-        - https://www.pyimagesearch.com/2015/12/28/increasing-raspberry-pi-fps-with-python-and-opencv/
+      - https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
+      - https://www.pyimagesearch.com/2015/12/28/increasing-raspberry-pi-fps-with-python-and-opencv/
 
       ps : imho pyimageresearch still the best for providing topic about opencv, makesure you check it 
 
