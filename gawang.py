@@ -88,8 +88,8 @@ while True:
             center = (int(cx), int(cy))
 
             rads = int(rw.read("setting/radius_gawang.txt"))
+            if radius > rads:
 
-                srw.serialWrite('A')
                 cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
                 cv.circle(result, center, 5, (0,0,255), -1)
                 cv.putText(result, "x : {} y : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
