@@ -5,8 +5,7 @@
 1. **Using custom compiled opencv-contrib library with OPENMP enabled**
 
     open mp will enable pararell processing, which will allow us to utilize all four core in our raspi,
-    but somehow as mentioned [here](https://stackoverflow.com/questions/37337828/openmp-how-to-use-all-available-cpu-to-improve-  performance),
-    the improvement not really significant, but still worth to try
+    but somehow as mentioned [here](https://stackoverflow.com/questions/37337828/openmp-how-to-use-all-available-cpu-to-improve-performance), the improvement not really significant, but still worth to try
 
       really usefull links
       - https://stackoverflow.com/questions/29494503/how-to-compile-opencv-with-openmp
@@ -74,8 +73,9 @@
 9. **Make a proper code documentation**
 
     make other people get what you code
-        Usefull links
-        - https://realpython.com/documenting-python-code/
+    
+    Usefull links
+    - https://realpython.com/documenting-python-code/
     
 10. **Researching for another object detection method**
     
