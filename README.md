@@ -21,8 +21,10 @@
 
     as i mention earlier, this also worth to try, also lot of people mention about using good driver for raspi cam, also research about that
 
-    >The Pi camera is 'run' by the GPU and can dump full frames into RAM at 15 frames a second .. this is 7.5MB/frame, 15fps = 112.5 Mega >BYTES per second .. or you can have full HD resolution 30fps H264 encoded (by the GPU) along with some simultaneous still photos (Google >MMAL) all at virtually zero CPU loading ..
-    >On the other hand, the Pi USB is 'run' byte at a time by the CPU, and, at the cost of 100% CPU loading you might achieve a couple of >hundred Mega BITS per second .. not that a web cam is going to deliver that anyway (even if it could, you then don't have any CPU cycles >to do anything with it ..)
+    >The Pi camera is 'run' by the GPU and can dump full frames into RAM at 15 frames a second .. this is 7.5MB/frame, 15fps = 112.5 Mega BYTES per second .. or you can have full HD resolution 30fps H264 encoded (by the GPU) along with some simultaneous still photos (Google>MMAL) all at virtually zero CPU loading ..
+    
+    >On the other hand, the Pi USB is 'run' byte at a time by the CPU, and, at the cost of 100% CPU loading you might achieve a couple of hundred Mega BITS per second .. not that a web cam is going to deliver that anyway (even if it could, you then don't have any CPU cycles to do anything with it ..)
+    
     >SO, unless CCTV resolutions (320x240 pixels) are what you want, it has to be the Pi camera.
 
       Reference links
@@ -75,3 +77,30 @@
         Usefull links
         - https://realpython.com/documenting-python-code/
     
+10. **Researching for another object detection method**
+    
+    Our current method is only using hsv color filtering which also appear to be the lightest method possible, but in some cases it is not robust enough, eg when the environtment not contrast enough (like the ball cases) for the goal post detection (the ball detection working fine so far). For our raspi system, perhaps its still possible to use more processing power since our current method barely utilize 30% cpu usage.
+    
+    Tried method
+    - SIFT SURF ORB and backprojection
+        barely detect the object, very heavy
+        the script is in /OldScript/feature_detection_SIFT_SURF_ORB.py
+        try again if you courious
+    - Homography
+        detecting the object, very heavy even on my laptop
+    - Haar Cascade
+        should be working, but i've tried and seems the dataset kinda bad, also the positive image also not very good quality 
+        there is separate repository for it [here](https://github.com/luqmansen/HaarCascadeImageTraining)
+     
+     Not tried
+     - Using YOLO object detection
+        cons :
+            Very very cpu intensive, using some kind of deep learning algorithm
+      
+      - Histogram of object oriented gradient
+        (advice from our prof)
+        
+     problem
+     - the haar cascade method rely on the result of image training, in this case i've tried to train a goal post image from internet, but not seems to be working in the field, in this case its not possible to re training with the goal post image taken before the match, but i mention earlier about the bad datasets that i used, so worth to retry this method again using good datasets.
+     - the YOLO image seems more reliable because of its fancy deep learning, but again its seems not possible on our raspi system or other small single board computer, but essetialy its also need to train the image and **IF** for getting reliable image, wwe should take the datasets image when match trial session, then seems also not possible
+     - the other sift surf orb, backprojection, homograpy is also rely on image feature matching, eg the goal post, and its possible to take the photo when match trial session
