@@ -33,10 +33,7 @@ while True:
     tinggi, panjang, _ = frame.shape
 
     gaussian_kernel = int(rw.read("setting/gaussian_gawang.txt"))
-    if gaussian_kernel == 0:
-        gaussian_kernel = 1
-    else:
-        gaussian_kernel = (2*gaussian_kernel)+1
+    gaussian_kernel = rw.odd(gaussian_kernel)
 
     frame = cv.GaussianBlur(frame, (gaussian_kernel,gaussian_kernel), 0)
 
@@ -56,16 +53,10 @@ while True:
     mask = cv.inRange(hsv, lower_white, upper_white)
 
     erosion = int(rw.read("setting/erosion_gawang.txt"))
-    if erosion == 0:
-        erosion = 1
-    else:
-        erosion = (2*erosion)+1
+    erosion = rw.odd(erosion)
 
     dilation= int(rw.read("setting/dilation_gawang.txt"))
-    if dilation == 0:
-        dilation = 1
-    else:
-        dilation = (2*dilation)+1
+    dilation = rw.odd(dilation)
 
     erosion_iterations = int(rw.read("setting/erosion_iteration_gawang.txt"))
     dilation_iterations = int(rw.read("setting/dilation_iteration_gawang.txt"))
