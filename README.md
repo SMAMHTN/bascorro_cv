@@ -68,3 +68,10 @@
 8. **Add argument parser**
 
     Sure helps for debuging (eg: need display, add different parameter, etc) and when playing, just don't include the argument 
+    
+9. **Make a proper code documentation**
+
+    make other people get what you code
+        Usefull links
+        - https://realpython.com/documenting-python-code/
+    
