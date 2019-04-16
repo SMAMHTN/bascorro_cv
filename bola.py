@@ -8,9 +8,10 @@ import cv2 as cv
 import numpy as np
 import imutils
 import rw_file as rw
+from imutils.video import WebcamVideoStream
 
 
-cap = cv.VideoCapture(0)
+
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
 cv.resizeWindow("trackbars", 300, 500)
@@ -28,11 +29,12 @@ cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosio
 cv.createTrackbar("gaussian", "trackbars", int(rw.read("setting/gaussian_bola.txt")), 20, lambda x : rw.write(x, "setting/gaussian_bola.txt"))
 cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_bola.txt")), 50, lambda x : rw.write(x, "setting/radius_bola.txt"))
 
+cap = WebcamVideoStream(0).start()
 while True:
-    ret, frame = cap.read()
+    frame = cap.read()
     frame =  imutils.resize(frame, width=300)
     tinggi, panjang, _ = frame.shape
-
+    print(tinggi,panjang)
     gaussian_kernel = int(rw.read("setting/gaussian_bola.txt"))
     gaussian_kernel = rw.odd(gaussian_kernel)
 
@@ -107,5 +109,5 @@ while True:
     if key == 27:
         break
 
-cap.release()
+cap.stop()
 cv.destroyAllWindows()
