@@ -30,7 +30,7 @@ def read(file):
     ---------
     file : str
         file to read, include the extension"""
-    f = open(file, "r")
+    f = open(str(file), "r")
     return f.read()
 
 
@@ -48,6 +48,7 @@ def odd(param):
         odd integer number
     """
     param = int(param)
+
     if param % 2 == 0:
         return  param + 1
     else:

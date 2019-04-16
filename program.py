@@ -2,9 +2,11 @@ import rw_file as rw
 # import serial_rw as srw
 import cv2 as cv
 import imutils
+from imutils.video import WebcamVideoStream
 import numpy as np
 
 #TODO bikin argument parser
+#TODO bikin function buat masukin semua parameter ke array
 
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
@@ -44,6 +46,7 @@ def detectObject(frame,tinggi,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,er
     frame = cv.GaussianBlur(frame, (gaussian,gaussian),0)
 
     erosion = rw.odd(erosion)
+    dilation = rw.odd(dilation)
 
     erosion_kernel = cv.getStructuringElement(cv.MORPH_RECT, (erosion,erosion))
     dilation_kernel = cv.getStructuringElement(cv.MORPH_RECT, (dilation,dilation))
@@ -77,14 +80,12 @@ def detectObject(frame,tinggi,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,er
 
     return result, mask, center, contours, x,y, radius
 
-cap = cv.VideoCapture(0)
-# cap.set(3, 480)
-# cap.set(4, 240)
+cap = WebcamVideoStream(0).start()
 
 def main():
     while True:
-        _, frame = cap.read()
-        frame = imutils.resize(frame, width=300,height=150)
+        frame = cap.read()
+        frame = imutils.resize(frame, width=300)
         tinggi, panjang, _  = frame.shape
 
         hsv = cv.cvtColor(frame,cv.COLOR_BGR2HSV)
@@ -165,8 +166,8 @@ def main():
         if key == 27:
             break
 
-    cap.release()
     cv.destroyAllWindows()
+    cap.stop()
 
 
 if __name__ == "__main__":
