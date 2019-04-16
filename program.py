@@ -4,9 +4,19 @@ import cv2 as cv
 import imutils
 from imutils.video import WebcamVideoStream
 import numpy as np
+import servo.servoControl as srv
+import argparse
 
 #TODO bikin argument parser
 #TODO bikin function buat masukin semua parameter ke array
+
+ap = argparse.ArgumentParser()
+
+ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
+
+ap.add_argument("-d", "--display", type=int, default=-1, help="Whether or not frame should be displayed")
+
+args = ap.parse_args()
 
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
@@ -80,7 +90,7 @@ def detectObject(frame,tinggi,hsv,lh,ls,lv,uh,us,uv,dilation,dil_iter,erosion,er
 
     return result, mask, center, contours, x,y, radius
 
-cap = WebcamVideoStream(0).start()
+cap = WebcamVideoStream(args.camera).start()
 
 def main():
     while True:
@@ -131,20 +141,22 @@ def main():
                     radius_gawang
                 )
 
-            if x_bola == 0 or y_bola == 0:
-                pass
+            srv.mapServoPosition(x_bola, x_gawang)
 
-            elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
-                cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
-                # srw.serialWrite('A')
-
-            elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
-                cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-                # srw.serialWrite('S')
-
-            elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
-                cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-                # srw.serialWrite('D')
+            # if x_bola == 0 or y_bola == 0:
+            #     pass
+            #
+            # elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
+            #     # srw.serialWrite('A')
+            #
+            # elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            #     # srw.serialWrite('S')
+            #
+            # elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            #     # srw.serialWrite('D')
 
 
             cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri

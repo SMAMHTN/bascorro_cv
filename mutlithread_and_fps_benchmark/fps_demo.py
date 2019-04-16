@@ -1,9 +1,9 @@
 from __future__ import print_function
 from imutils.video import WebcamVideoStream
 from imutils.video import FPS
-import argparse
 import imutils
 import cv2 as cv
+import  argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-n", "--num-frames", type=int, default=100, help="# of frames to loop over for FPS test")
