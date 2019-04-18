@@ -10,24 +10,31 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 
-panAngle = 90
-tiltAngle = 90
+panAngle = 0
+tiltAngle = 0
 
 
 # def positionServo(servo, angle):
 #     os.system("python angleServoCtrl " + str(servo) + " " + str(angle))
+
+# def disableServo(servo):
+#     GPIO.setup(servo, GPIO.OUT)
+#     pwm = GPIO.PWM(servo, 50)
+#     pwm.ChangeDutyCycle(0)
 
 
 def setServoAngle(servo, angle):
     GPIO.setup(servo,GPIO.OUT)
     pwm = GPIO.PWM(servo, 50)
     pwm.start(8)
-    dutyCycle = (9.8*angle/180) + 2.
+    # dutyCycle = (9.8*angle/180) + 2.
+    dutyCycle = (9.8 * (angle + 90) / 180)+ 2.
     pwm.ChangeDutyCycle(dutyCycle)
     sleep(0.3)
     pwm.stop()
 
 def mapServoPosition(x, y):
+    # this function is deprecated
     global tiltAngle
     global panAngle
     if (x < 100):

@@ -1,0 +1,10 @@
+- init
+    set gpio ke output
+    nge map pin servo
+    set servo ke on
+    set pwm / dutycycle ke 0
+
+- destroy
+    shutdown output
+    clean pin gpio
+    turn of servo

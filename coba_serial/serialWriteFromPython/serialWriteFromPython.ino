@@ -11,9 +11,10 @@ void loop()
   while(Serial.available())
   {
     r = Serial.read();
+    Serial.print(r);
   }
-  if (r == 'A')
-    digitalWrite(led, HIGH);
-  else if (r == 'B') 
-    digitalWrite(led, LOW);  
+//  if (r == 'A')
+//    digitalWrite(led, HIGH);
+//  else if (r == 'B') 
+//    digitalWrite(led, LOW);  
 }

@@ -1,6 +1,6 @@
 import serial
 
-ser = serial.Serial(port='\\.\COM3', baudrate=9600)
+ser = serial.Serial(port='\\.\COM5', baudrate=9600)
 
 def serialRead():
     while True:

@@ -1,5 +1,5 @@
 import rw_file as rw
-# import serial_rw as srw
+import serial_rw as srw
 import cv2 as cv
 import imutils
 from imutils.video import WebcamVideoStream
@@ -141,7 +141,7 @@ def main():
                     radius_gawang
                 )
 
-            # srv.mapServoPosition(x_bola, x_gawang)
+             # srv.mapServoPosition(x_bola, x_gawang)
 
             # if x_bola == 0 or y_bola == 0:
             #     pass
@@ -157,7 +157,8 @@ def main():
             # elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
             #     cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
             #     # srw.serialWrite('D')
-
+            print(x_bola)
+            srw.serialWrite(str(x_bola))
             if args.display > 0:
                 cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
                 cv.line(result_gawang, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
