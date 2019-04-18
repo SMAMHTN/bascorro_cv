@@ -99,6 +99,8 @@
       
       - Histogram of object oriented gradient
         (advice from our prof)
+         - https://www.pyimagesearch.com/2014/11/10/histogram-oriented-gradients-object-detection/
+         - https://www.pyimagesearch.com/2015/11/16/hog-detectmultiscale-parameters-explained/
         
      problem
      - the haar cascade method rely on the result of image training, in this case i've tried to train a goal post image from internet, but not seems to be working in the field, in this case its not possible to re training with the goal post image taken before the match, but i mention earlier about the bad datasets that i used, so worth to retry this method again using good datasets.
