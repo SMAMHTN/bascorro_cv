@@ -1,6 +1,6 @@
 # bascorro_cv
 
-## To research in nearby future
+## To do and research in nearby future
 
 1. **Using custom compiled opencv-contrib library with OPENMP enabled**
 
@@ -62,12 +62,14 @@
       Usefull links
       - https://www.pyimagesearch.com/2015/12/21/increasing-webcam-fps-with-python-and-opencv/
       - https://www.pyimagesearch.com/2015/12/28/increasing-raspberry-pi-fps-with-python-and-opencv/
+      - https://www.pyimagesearch.com/2016/01/04/unifying-picamera-and-cv2-videocapture-into-a-single-class-with-opencv/
 
       ps : imho pyimageresearch still the best for providing topic about opencv, makesure you check it 
 
   
-8. **Add argument parser**
-
+8. **Add argument parser** | #TODO
+    
+    For every script that need to run on the match
     Sure helps for debuging (eg: need display, add different parameter, etc) and when playing, just don't include the argument 
     
 9. **Make a proper code documentation**
@@ -106,3 +108,13 @@
      - the haar cascade method rely on the result of image training, in this case i've tried to train a goal post image from internet, but not seems to be working in the field, in this case its not possible to re training with the goal post image taken before the match, but i mention earlier about the bad datasets that i used, so worth to retry this method again using good datasets.
      - the YOLO image seems more reliable because of its fancy deep learning, but again its seems not possible on our raspi system or other small single board computer, but essetialy its also need to train the image and **IF** for getting reliable image, wwe should take the datasets image when match trial session, then seems also not possible
      - the other sift surf orb, backprojection, homograpy is also rely on image feature matching, eg the goal post, and its possible to take the photo when match trial session
+
+ 11. **Research about ROS**
+ 
+ With our current method to drive the servo and stuff, as far as i know, it's fundamentally different than how ros works. And so little reference about how to drive non dynamixel servo, and "really" builing at least biped robot. So this part perhaps need longer time to research than any other part.
+Carefully read the whole documentation from ros website (link below)
+
+  Usefull Reference
+  - https://answers.ros.org/question/270089/how-to-implement-ros-in-my-custom-made-robot/
+  - http://wiki.ros.org/tf/Tutorials
+    
