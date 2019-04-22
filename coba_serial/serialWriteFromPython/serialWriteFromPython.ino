@@ -4,6 +4,7 @@ void setup(){
   Serial.begin(9600);
   pinMode(led, OUTPUT);  
   digitalWrite(led, HIGH);
+  
 }
 
 void loop()
@@ -13,8 +14,9 @@ void loop()
     r = Serial.read();
     Serial.print(r);
   }
-//  if (r == 'A')
-//    digitalWrite(led, HIGH);
-//  else if (r == 'B') 
-//    digitalWrite(led, LOW);  
+  r = int(r);
+  if (r > 100)
+    digitalWrite(led, HIGH);
+  else if (r == 'B') 
+    digitalWrite(led, LOW);  
 }

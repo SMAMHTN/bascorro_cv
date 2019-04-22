@@ -26,7 +26,7 @@ cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosio
 cv.createTrackbar("gaussian", "trackbars", int(rw.read("setting/gaussian_gawang.txt")), 20, lambda x : rw.write(x, "setting/gaussian_gawang.txt"))
 cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt")), 20, lambda x : rw.write(x, "setting/radius_gawang.txt"))
 
-cap = WebcamVideoStream(1).start()
+cap = WebcamVideoStream(0).start()
 
 while True:
     frame = cap.read()

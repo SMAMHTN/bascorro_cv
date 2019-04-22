@@ -1,6 +1,6 @@
 import serial
 
-ser = serial.Serial(port='\\.\COM5', baudrate=9600)
+ser = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=1.0)
 
 def serialRead():
     while True:
@@ -12,6 +12,5 @@ def serialWrite(params):
     params = params.encode()
     ser.write(params)
 
-# while True:
-#     serialWrite(str(input("input something :")))
-
+while True:
+    serialWrite(str(input("input:")))
