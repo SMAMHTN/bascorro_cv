@@ -1,22 +1,21 @@
-int r = 1;
-int led = 13;
-void setup(){
-  Serial.begin(9600);
-  pinMode(led, OUTPUT);  
-  digitalWrite(led, HIGH);
-  
+int x, y;
+void setup() {
+  Serial.begin(115200);
 }
 
 void loop()
 {
-  while(Serial.available())
+  while (Serial.available())
   {
-    r = Serial.read();
-    Serial.print(r);
+    if (Serial.parseInt() == 777) {
+      x = Serial.parseInt();
+      Serial.print('x');
+      Serial.println(x);
+    }
+    if (Serial.parseInt() == 666) {
+      y = Serial.parseInt();
+      Serial.print('y');
+      Serial.println(y);
+    }
   }
-  r = int(r);
-  if (r > 100)
-    digitalWrite(led, HIGH);
-  else if (r == 'B') 
-    digitalWrite(led, LOW);  
 }

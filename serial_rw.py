@@ -1,6 +1,6 @@
 import serial
 
-ser = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=1.0)
+ser = serial.Serial("/dev/serial0", baudrate=115200, timeout=1.0)
 
 def serialRead():
     while True:
@@ -8,9 +8,20 @@ def serialRead():
             line = ser.readline()
             return line
 
-def serialWrite(params):
-    params = params.encode()
-    ser.write(params)
+def serialWrite(x,y):
+        ser.write("!")
+        print("X=")
+        print(x)
+        ser.write(str(x))
+        ser.write("|")
 
-while True:
-    serialWrite(str(input("input:")))
+        ser.write("@")
+        print("Y=")
+        print(y)
+        ser.write(str(y))
+        ser.write("|")
+
+        ser.write("\r\n")
+
+#while True:
+#    serialWrite(x,y)

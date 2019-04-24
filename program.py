@@ -122,6 +122,8 @@ def main():
 
         if rads_bola  != None and rads_bola > radius_bola:
 
+            srw.serialWrite(str(x_bola), str(y_bola))
+
             result_gawang, _, center_gawang, _, x_gawang, y_gawang, rads_gawang = detectObject\
                 (
                     frame,
@@ -157,8 +159,7 @@ def main():
             # elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
             #     cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
             #     # srw.serialWrite('D')
-            print(x_bola)
-            srw.serialWrite(str(x_bola))
+
             if args.display > 0:
                 cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
                 cv.line(result_gawang, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
