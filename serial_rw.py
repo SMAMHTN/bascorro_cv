@@ -9,19 +9,19 @@ def serialRead():
             return line
 
 def serialWrite(x,y):
-        ser.write("!")
-        print("X=")
-        print(x)
-        ser.write(str(x))
-        ser.write("|")
+        ser.write("!".encode())
+        #print("X=")
+        #print(x)
+        ser.write(str(int(x)).encode())
+        ser.write("|".encode())
 
-        ser.write("@")
-        print("Y=")
-        print(y)
-        ser.write(str(y))
-        ser.write("|")
+        ser.write("@".encode())
+        #print("Y=")
+        #print(y)
+        ser.write(str(int(y)).encode())
+        ser.write("|".encode())
 
-        ser.write("\r\n")
+        ser.write("\r\n".encode())
 
 #while True:
 #    serialWrite(x,y)

@@ -8,7 +8,15 @@ import cv2 as cv
 import numpy as np
 import imutils
 import rw_file as rw
+import argparse
 from imutils.video import WebcamVideoStream
+
+ap = argparse.ArgumentParser()
+
+ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
+ap.add_argument("-d", "--display", type=int, default=-1, help="Whether or not frame should be displayed")
+
+args = ap.parse_args()
 
 cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
 cv.resizeWindow("trackbars", 300, 500)
@@ -26,7 +34,7 @@ cv.createTrackbar("Erosion iterations", "trackbars", int(rw.read("setting/erosio
 cv.createTrackbar("gaussian", "trackbars", int(rw.read("setting/gaussian_gawang.txt")), 20, lambda x : rw.write(x, "setting/gaussian_gawang.txt"))
 cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt")), 20, lambda x : rw.write(x, "setting/radius_gawang.txt"))
 
-cap = WebcamVideoStream(0).start()
+cap = WebcamVideoStream(args.camera).start()
 
 while True:
     frame = cap.read()
@@ -94,10 +102,11 @@ while True:
     cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
     cv.line(result, (0, int(2*tinggi/3)), (panjang, int(2*tinggi/3) ), (123,10,32), 2) #bawah
 
-    cv.imshow("result", result)
-    cv.imshow("mask", mask)
+    if args.display > 0:
+        cv.imshow("result", result)
+        cv.imshow("mask", mask)
+        cv.imshow("frame", frame)
 
-    cv.imshow("frame", frame)
     key = cv.waitKey(1)
     if key == 27:
         break

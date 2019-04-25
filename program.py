@@ -13,7 +13,6 @@ import argparse
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
-
 ap.add_argument("-d", "--display", type=int, default=-1, help="Whether or not frame should be displayed")
 
 args = ap.parse_args()
@@ -124,6 +123,23 @@ def main():
 
             srw.serialWrite(str(x_bola), str(y_bola))
 
+            #buat
+
+            # if x_bola == 0 or y_bola == 0:
+            #     pass
+            #
+            # elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
+            #     # srw.serialWrite('A')
+            #
+            # elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            #     # srw.serialWrite('S')
+            #
+            # elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
+            #     cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
+            #     # srw.serialWrite('D')
+
             result_gawang, _, center_gawang, _, x_gawang, y_gawang, rads_gawang = detectObject\
                 (
                     frame,
@@ -143,29 +159,12 @@ def main():
                     radius_gawang
                 )
 
-             # srv.mapServoPosition(x_bola, x_gawang)
-
-            # if x_bola == 0 or y_bola == 0:
-            #     pass
-            #
-            # elif x_gawang < panjang / 3 and y_gawang < 2 * tinggi / 3:
-            #     cv.putText(result_gawang, "KIRI ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 255, 10), 1)
-            #     # srw.serialWrite('A')
-            #
-            # elif x_gawang < 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
-            #     cv.putText(result_gawang, "TENGAH ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-            #     # srw.serialWrite('S')
-            #
-            # elif x_gawang > 2 * panjang / 3 and y_gawang < 2 * tinggi / 3:
-            #     cv.putText(result_gawang, "KANAN ATAS", (10, tinggi - 40), cv.FONT_HERSHEY_SIMPLEX, 0.5, (100, 250, 10), 1)
-            #     # srw.serialWrite('D')
 
             if args.display > 0:
                 cv.line(result_gawang, (int(panjang / 3), tinggi), (int(panjang / 3), 0), (0, 255, 0), 2)  # kiri
                 cv.line(result_gawang, (int(2 * panjang / 3), tinggi), (int(2 * panjang / 3), 0), (0, 255, 0), 2)  # kanan
                 cv.line(result_gawang, (0, int(2 * tinggi / 3)), (panjang, int(2 * tinggi / 3)), (123, 10, 32), 2)  # bawah
                 cv.imshow("gawang", result_gawang)
-            # print(x_bola,y_bola)
 
         else:
             # trigger function serial disini buat cari bola
