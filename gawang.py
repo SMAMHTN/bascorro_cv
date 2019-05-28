@@ -14,7 +14,7 @@ from imutils.video import WebcamVideoStream
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
-ap.add_argument("-d", "--display", type=int, default=-1, help="Whether or not frame should be displayed")
+ap.add_argument("-d", "--display", type=int, default=1, help="Whether or not frame should be displayed")
 
 args = ap.parse_args()
 
@@ -38,6 +38,7 @@ cap = WebcamVideoStream(args.camera).start()
 
 while True:
     frame = cap.read()
+#    frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
     frame =  imutils.resize(frame, width=300)
     tinggi, panjang, _ = frame.shape
 

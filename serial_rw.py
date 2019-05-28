@@ -1,6 +1,6 @@
 import serial
 
-ser = serial.Serial("/dev/serial0", baudrate=115200, timeout=1.0)
+#ser = serial.Serial("/dev/serial0", baudrate=115200, timeout=1.0)
 
 def serialRead():
     while True:

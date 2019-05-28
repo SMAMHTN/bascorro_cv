@@ -15,7 +15,7 @@ import argparse
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
-ap.add_argument("-d", "--display", type=int, default=-1, help="Whether or not frame should be displayed")
+ap.add_argument("-d", "--display", type=int, default=1, help="Whether or not frame should be displayed")
 
 args = ap.parse_args()
 
@@ -94,12 +94,12 @@ while True:
 
             rads = int(rw.read("setting/radius_bola.txt"))
             if radius > rads :
-                srw.serialWrite(x,y)
+#                srw.serialWrite(x,y)
                 cv.circle(result, (int(x), int(y)), int(radius), (0,255,255), 2)
                 cv.circle(result, (int(x), int(y)), 5, (0,0,255), -1)
                 cv.putText(result, "Cx : {}  Cy : {}".format(int(x), int(y)), (10, tinggi-25), cv.FONT_HERSHEY_COMPLEX_SMALL,0.8, (10,255,10))
-        else:
-            srw.serialWrite(0,0)
+        #else:
+ #           srw.serialWrite(0,0)
 
     #cv.line(result, (int(panjang/3), tinggi), (int(panjang/3),0), (0,255,0), 2) #kiri
     #cv.line(result, (int(2*panjang/3), tinggi), (int(2*panjang/3),0), (0,255,0), 2) # kanan
