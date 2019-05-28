@@ -5,9 +5,7 @@ from imutils.video import WebcamVideoStream
 import numpy as np
 import argparse
 
-
-
-
+### LOAD CONFIGURATION ###
 l_h_gawang = int(rw.read("setting/LH_gawang.txt"))
 l_s_gawang = int(rw.read("setting/LS_gawang.txt"))
 l_v_gawang = int(rw.read("setting/LV_gawang.txt"))
@@ -50,17 +48,24 @@ ap.add_argument("-c", "--camera", type=int, default=0, help="change camera")
 ap.add_argument("-d", "--display", type=int, default=1, help="Whether or not frame should be displayed")
 args = ap.parse_args()
 
-
+cv.namedWindow("trackbars", cv.WINDOW_NORMAL)
+cv.resizeWindow("trackbars", 300, 500)
+cv.createTrackbar("t1", "trackbars", int(rw.read("setting/canny_1.txt")), 2000, lambda x: rw.write(x, "setting/canny_1.txt"))
+cv.createTrackbar("t2", "trackbars", int(rw.read("setting/canny_2.txt")), 2000, lambda x : rw.write(x, "setting/canny_2.txt"))
 
 cap = WebcamVideoStream(0).start()
 
 while True:
-    frame = cap.read()
-    #frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
+    #frame = cap.read()
+    frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
     frame =  imutils.resize(frame, width=300)
     tinggi, panjang, _ = frame.shape
+
     filtered = color_filter(frame)
 
+    t1 = int(rw.read("setting/canny_1.txt"))
+    t2 = int(rw.read("setting/canny_2.txt"))
+    filtered = cv.Canny(filtered,t1,t2)
     if args.display > 0:
         #cv.imshow("result", result)
         #cv.imshow("mask", mask)

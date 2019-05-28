@@ -37,8 +37,8 @@ cv.createTrackbar("radius", "trackbars", int(rw.read("setting/radius_gawang.txt"
 cap = WebcamVideoStream(args.camera).start()
 
 while True:
-    frame = cap.read()
-#    frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
+#    frame = cap.read()
+    frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
     frame =  imutils.resize(frame, width=300)
     tinggi, panjang, _ = frame.shape
 
