@@ -35,11 +35,6 @@ def color_filter(frame):
     result = cv.bitwise_and(frame, frame, mask=mask)
     return result
 
-def canny(frame):
-    pass
-
-def hough(frame):
-    pass
 
 img = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
 
@@ -53,25 +48,48 @@ cv.resizeWindow("trackbars", 300, 500)
 cv.createTrackbar("t1", "trackbars", int(rw.read("setting/canny_1.txt")), 2000, lambda x: rw.write(x, "setting/canny_1.txt"))
 cv.createTrackbar("t2", "trackbars", int(rw.read("setting/canny_2.txt")), 2000, lambda x : rw.write(x, "setting/canny_2.txt"))
 
-cap = WebcamVideoStream(0).start()
-
+#cap = WebcamVideoStream(0).start()
+cap = cv.VideoCapture("gambar/reg3.mp4")
 while True:
-    #frame = cap.read()
-    frame = cv.imread("gambar/original_image.jpg", cv.COLOR_RGB2HSV)
-    frame =  imutils.resize(frame, width=300)
+    ret ,frame = cap.read()
+    if not ret:
+        cap = cv.VideoCapture("gambar/reg3.mp4")
+        continue
+    frame =  imutils.resize(frame, width=600)
+
     tinggi, panjang, _ = frame.shape
 
     filtered = color_filter(frame)
 
     t1 = int(rw.read("setting/canny_1.txt"))
     t2 = int(rw.read("setting/canny_2.txt"))
-    filtered = cv.Canny(filtered,t1,t2)
+    edges = cv.Canny(filtered,t1,t2,apertureSize = 5)
+
+    lines = cv.HoughLines(edges, 12, np.pi / 180, 10)
+    if lines is not None:
+        '''for line in lines:
+            x1,y1,x2,y2 = line[0]
+            cv.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)'''
+        for rho, theta in lines[0]:
+            a = np.cos(theta)
+            b = np.sin(theta)
+            x0 = a * rho
+            y0 = b * rho
+            x1 = int(x0 + 1000 * (-b))
+            y1 = int(y0 + 1000 * (a))
+            x2 = int(x0 - 1000 * (-b))
+            y2 = int(y0 - 1000 * (a))
+
+            cv.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 2)
+
+
+
     if args.display > 0:
-        #cv.imshow("result", result)
-        #cv.imshow("mask", mask)
+        cv.imshow("result", frame)
+        cv.imshow("edge", edges)
         cv.imshow("frame", filtered)
 
-    key = cv.waitKey(1)
+    key = cv.waitKey(25)
     if key == 27:
         break
 
