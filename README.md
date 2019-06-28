@@ -120,8 +120,14 @@ Carefully read the whole documentation from ros website (link below)
   
   12. **Research Distance using Stereo Camera**   
   Keywords : Angle + Triangulation
-  
+    Usefull reference
+    - https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/
+    - https://photo.stackexchange.com/questions/12434/how-do-i-calculate-the-distance-of-an-object-in-a-photo
+    - https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/
+   
   13. **Research Deep Learning Based Image recognition**   
     - DNN
     - Yolo
+    
+  
     
