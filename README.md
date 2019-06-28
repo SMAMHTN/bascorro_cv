@@ -117,4 +117,11 @@ Carefully read the whole documentation from ros website (link below)
   Usefull Reference
   - https://answers.ros.org/question/270089/how-to-implement-ros-in-my-custom-made-robot/
   - http://wiki.ros.org/tf/Tutorials
+  
+  12. **Research Distance using Stereo Camera**   
+  Keywords : Angle + Triangulation
+  
+  13. **Research Deep Learning Based Image recognition**   
+    - DNN
+    - Yolo
     
